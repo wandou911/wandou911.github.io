@@ -217,7 +217,7 @@
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/11/23/hello-world/" target="_blank" rel="external">http://blog.iruach.com/2018/11/23/hello-world/</a>
+        原文链接：<a href="/2018/11/23/hello-world/" target="_blank" rel="external">http://blog.iruach.com/2018/11/23/hello-world/</a>
         
     </div>
     
@@ -316,17 +316,15 @@
     
 
 
+
+
+
 <section class="comments" id="comments">
-    <div id="disqus_thread"></div>
-    <script>
-    var disqus_shortname = 'true';
-    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
 </section>
-
-
-
 
 
 
@@ -346,7 +344,7 @@
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
-        谢谢大爷~
+        谢谢打赏~
         <i class="icon icon-quote-right"></i>
     </h3>
     <div class="reward-content">
@@ -399,6 +397,8 @@
             </span>
         </p>
     </div>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 </footer>
 
     </main>
@@ -495,10 +495,10 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '死鬼去哪里了！';
+            document.title = '晨星科技';
             clearTimeout(titleTime);
         } else {
-            document.title = '(つェ⊂)咦!又好了!';
+            document.title = '晨星科技';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);
