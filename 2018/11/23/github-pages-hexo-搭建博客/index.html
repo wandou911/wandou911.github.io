@@ -25,10 +25,10 @@
 <meta name="keywords" content="web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="github pages+hexo 搭建博客">
-<meta property="og:url" content="http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/index.html">
+<meta property="og:url" content="http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/index.html">
 <meta property="og:site_name" content="晨星科技">
 <meta property="og:description" content="博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。 ps:本博客是在MAC环境下进行搭建的，并且对github pages和一些shell脚本知识有所了解。 首先简单描述一下搭建的大体流程吧（其实挺简单的，只是体力活费时而已）：  拥有一个github pages 在本地电脑里配置hexo的环境。（ hexo与github pages绑定，写博文修改博文">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fxhrhpi00vj313l0u0gr9.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxhs69aoabj31jm0owwm2.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxhtrrucpyj30ze0e0gnj.jpg">
@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxhuic2r9qj317g0m8n2o.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fxhuaucmwoj30zm0dmjrt.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxhubrqe7vj317u0m4gr1.jpg">
-<meta property="og:updated_time" content="2018-11-23T06:46:15.443Z">
+<meta property="og:updated_time" content="2018-11-23T07:14:28.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github pages+hexo 搭建博客">
 <meta name="twitter:description" content="博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。 ps:本博客是在MAC环境下进行搭建的，并且对github pages和一些shell脚本知识有所了解。 首先简单描述一下搭建的大体流程吧（其实挺简单的，只是体力活费时而已）：  拥有一个github pages 在本地电脑里配置hexo的环境。（ hexo与github pages绑定，写博文修改博文">
@@ -71,7 +71,7 @@
           <img src="/img/avatar.jpg">
         </a>
         <hgroup class="introduce">
-          <h5 class="nickname">wandou911</h5>
+          <h5 class="nickname">wandou</h5>
           <a href="mailto:wandou911@gmail.com" title="wandou911@gmail.com" class="mail">wandou911@gmail.com</a>
         </hgroup>
       </div>
@@ -122,9 +122,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom">
+              <a href="/about">
                 <i class="icon icon-lg icon-link"></i>
-                测试
+                about
               </a>
             </li>
         
@@ -145,7 +145,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -186,7 +186,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Github-Pages-（第一步）"><span class="post-toc-number">1.</span> <span class="post-toc-text">Github Pages （第一步）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hexo-（第二步）"><span class="post-toc-number">2.</span> <span class="post-toc-text">Hexo （第二步）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建站"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">建站</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发布"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">发布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HEXO主题"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">HEXO主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主题安装："><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">主题安装：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主题配置："><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">主题配置：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#笔者分享"><span class="post-toc-number">3.</span> <span class="post-toc-text">笔者分享</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文章管理"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">文章管理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shell脚本自动化（可忽略，只是一个想法）"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">shell脚本自动化（可忽略，只是一个想法）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hexo常见问题"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Hexo常见问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">参考链接:</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Github-Pages-（第一步）"><span class="post-toc-number">1.</span> <span class="post-toc-text">Github Pages （第一步）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hexo-（第二步）"><span class="post-toc-number">2.</span> <span class="post-toc-text">Hexo （第二步）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建站"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">建站</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发布"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">发布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HEXO主题"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">HEXO主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主题安装："><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">主题安装：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主题配置："><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">主题配置：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#域名绑定（第三步，可选）"><span class="post-toc-number">3.</span> <span class="post-toc-text">域名绑定（第三步，可选）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#笔者分享"><span class="post-toc-number">4.</span> <span class="post-toc-text">笔者分享</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文章管理"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">文章管理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shell脚本自动化（可忽略，只是一个想法）"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">shell脚本自动化（可忽略，只是一个想法）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hexo常见问题"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">Hexo常见问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">参考链接:</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -196,7 +196,7 @@
     <div class="post-card">
         <h1 class="post-card-title">github pages+hexo 搭建博客</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-11-23 14:36:10" datetime="2018-11-23T06:36:10.000Z" itemprop="datePublished">2018-11-23</time>
+            <time class="post-time" title="2018-11-23 06:36:10" datetime="2018-11-23T06:36:10.000Z" itemprop="datePublished">2018-11-23</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
@@ -295,8 +295,7 @@
                 </div>
                 <div class="image-caption">indigo主题配置</div>
             </figure>
-<p>##域名绑定（第三步，可选）</p>
-<p>笔者是在万网买的域名（<a href="http://iruach.com/" target="_blank" rel="noopener">http://iruach.com/</a>）。 域名买好之后提交实名认证等，这些操作就不在赘述。域名购买地址<a href="https://wanwang.aliyun.com/" target="_blank" rel="noopener">https://wanwang.aliyun.com/</a>。</p>
+<h2 id="域名绑定（第三步，可选）"><a href="#域名绑定（第三步，可选）" class="headerlink" title="域名绑定（第三步，可选）"></a>域名绑定（第三步，可选）</h2><p>笔者是在万网买的域名（<a href="http://iruach.com/" target="_blank" rel="noopener">http://iruach.com/</a>）。 域名买好之后提交实名认证等，这些操作就不在赘述。域名购买地址<a href="https://wanwang.aliyun.com/" target="_blank" rel="noopener">https://wanwang.aliyun.com/</a>。</p>
 <p>这里需要特别提一下的就是万网如何与github pages进行绑定，首先假设你有一个域名并且是可用状态。修改你域名的DNS地址为 f1g1ns1.dnspod.net和f1g1ns2.dnspod.net</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -369,6 +368,7 @@
 <p>2 <a href="https://hexo.io" target="_blank" rel="noopener">hexo官方文档</a></p>
 <p>3 <a href="https://www.zhihu.com/question/24422335" target="_blank" rel="noopener">有哪些好看的 Hexo 主题</a></p>
 <p>4 <a href="https://www.jianshu.com/p/4d2c07a330da" target="_blank" rel="noopener">Hexo常见问题</a></p>
+<p>5 <a href="https://github.com/qiubaiying/qiubaiying.github.io/wiki/博客搭建详细教程#Rename" target="_blank" rel="noopener">博客搭建详细教程</a></p>
 
         </div>
 
@@ -377,19 +377,19 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-11-23T06:46:15.443Z" itemprop="dateUpdated">2018-11-23 14:46:15</time>
+    最后更新时间：<time datetime="2018-11-23T07:14:28.417Z" itemprop="dateUpdated">2018-11-23 07:14:28</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/11/23/github-pages-hexo-搭建博客/" target="_blank" rel="external">http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/11/23/github-pages-hexo-搭建博客/" target="_blank" rel="external">http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/</a>
         
     </div>
     
     <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpg" alt="wandou911">
-            wandou911
+        <a href="http://blog.iruach.com">
+            <img src="/img/avatar.jpg" alt="wandou">
+            wandou
         </a>
     </footer>
 </blockquote>
@@ -413,7 +413,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/&title=《github pages+hexo 搭建博客》 — 晨星科技&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/&title=《github pages+hexo 搭建博客》 — 晨星科技&pic=http://blog.iruach.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -423,22 +423,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/&title=《github pages+hexo 搭建博客》 — 晨星科技&source=专注人工智能" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/&title=《github pages+hexo 搭建博客》 — 晨星科技&source=专注人工智能" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《github pages+hexo 搭建博客》 — 晨星科技&url=http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《github pages+hexo 搭建博客》 — 晨星科技&url=http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/&via=http://blog.iruach.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -458,7 +458,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/23/常用软件/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">常用软件</h4>
+      </a>
+    </div>
   
 
   
@@ -548,11 +555,11 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>wandou911 &copy; 2015 - 2018</span>
+        <p><span>wandou &copy; 2015 - 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -570,7 +577,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/&title=《github pages+hexo 搭建博客》 — 晨星科技&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/&title=《github pages+hexo 搭建博客》 — 晨星科技&pic=http://blog.iruach.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -580,22 +587,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/&title=《github pages+hexo 搭建博客》 — 晨星科技&source=专注人工智能" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/&title=《github pages+hexo 搭建博客》 — 晨星科技&source=专注人工智能" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《github pages+hexo 搭建博客》 — 晨星科技&url=http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《github pages+hexo 搭建博客》 — 晨星科技&url=http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/&via=http://blog.iruach.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/11/23/github-pages-hexo-搭建博客/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -606,7 +613,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3a0W6DMAwF0P7/T3fSniZt0GsbJpEcniqgkJNKbmzn9YqP9/dxdP7n1d9nkjt/H687DgwMjMcyksclV/M750/7g4qBgbEB4zzIJiH1/Lt5MD1674cxY2BgYARh8XzQCeb8LRgYGBhVRnL+fAGaXMXAwMCYJ5a94Jt868ZcHAMD44GMamPgPz/f2N/AwMB4COPdOnqlsTytLY8HAwNjacZkMddrBlTbpYUyHAYGxtKMSeGst8i7o6mJgYGxAyN/UD4Rk0JbdXIxMDBWZSStxGQQvWJ9tc15yMbAwFiakS8Qq0u0ansynyYMDIzdGHnKmmPmm8nK7QcMDIylGZNi/XxAvXD84TfBwMBYjtEr+s9bBRdv3cDAwNiAUS2WTTZhVJujUUqMgYGxNKO3uWECnqfBhUnHwMBYjjFpQ/ZS3+rzoydgYGBswKimnZNAmae+hSnAwMDYgFHd1J7zrmo/lJeGGBgYD2fkbYDkxUnTMZmsJNxjYGDsw+gllklZPy+09QaNgYGxD6MaRpPwWt1akYfpw+UjBgbG0oxJ2K3i562IckaOgYGxBKMXWPOCfnWxWP0beE3+HzAwMB7CmKSsefszL+Rd1sjEwMBYjjFpAEzCYq+FEPVgMTAwFmXkRfzekjEPps1cHAMDA6MYWHNSsnwc9WAxMDA2YyRBc1LCawIwMDC2YdzRDLhqOqItGhgYGEszqo2BatDs3VMNxxgYGIsyvgDBtfUbs5dnXAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuUlEQVR42u3aW5LjIAwFUO9/090LyGBfSeBOTR1/pfKwOXyAcsV1xdfPx/X56ec3V/e5f3/1rNVvN1x4eHh446Gvbp0P/X5w93fujWc5Njw8PLxjvGS4yQp8//j7dXu+SeDh4eF9Py/fQnrLOh4eHt7/wbt/TDKUfKvIn4uHh4f3Pi/5898rnavT1It6N2QteHh4eDEv7yJ9z+sj/T08PDy8cVc9aT4lRXCvnbZhtHh4eHinFsJCc6s39Em5nIQmDzEHHh4e3gFeHjfcx7LVBb233FejEzw8PLy9vGogm7epkkK8eiih3E7Dw8PDO8zLC9xewyyZuF5sUY4h8PDw8Ma8vA0/jxJ2FetRYwwPDw/vRV6yKM/jiUlwHG1ReHh4eMd4vTB3Ui5XC+5mqIGHh4f3Im8S0eaLfvJ+b1ofNgY8PDy8Tbxe62u+9BcaWnGEEfX38PDw8Ma8ahGcPKxasveS2OVrPDw8vGO8JDDNS+QkJsij2En8gYeHh3eCtzfM7ZXpve8XCnE8PDy8rbx8M+iFCPPQoRcEP8S4eHh4eGNeteWflL+T41zVQ1fLe+Lh4eH9EW8ezubBa9TWyrcKPDw8vGO8PBTIS+R5IDsJNfDw8PDe4fWOPeWHD67WlU/TP0R4eHh4B3jVllL1iEBvw8inJjr0gIeHh3eMVz2G1SuX88nK22DRyTI8PDy8w7xeWFBtU/UK8WpIgYeHh3eOlwwijxXywwTlcHbS5cPDw8Mb83oHqqrLd/5ptUx/mFY8PDy8A7y9jajqVjEv3K9dFx4eHl6RV41ck8B3HjRUo4flnfHw8PCO8XbFu9VNZVcM8ZC14OHh4X0Bb77Q94rv8qTg4eHhfQ2vWuz2Bto7yoCHh4f3Di/5cbU1VQ18e021h+IeDw8P7wCv9yd/fpigh79OXHh4eHjp9QuwfJKXv9EBqgAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
