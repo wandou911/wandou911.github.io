@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.iruach.com/"/>
-  <updated>2019-05-15T14:57:19.852Z</updated>
+  <updated>2019-05-15T15:14:34.831Z</updated>
   <id>http://blog.iruach.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SSR客户端下载</title>
+    <link href="http://blog.iruach.com/2019/05/16/SSR%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://blog.iruach.com/2019/05/16/SSR客户端下载/</id>
+    <published>2019-05-15T23:03:47.000Z</published>
+    <updated>2019-05-15T15:14:34.831Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Android-客户端"><a href="#Android-客户端" class="headerlink" title="Android 客户端"></a>Android 客户端</h3><p><a href="https://github.com/shadowsocks/shadowsocks-android/releases" target="_blank" rel="noopener">Shadowsocks 影梭</a></p><p><a href="https://play.google.com/store/apps/details?id=com.github.shadowsocks" target="_blank" rel="noopener">Shadowsocks 影梭 Google Play</a></p><p><a href="https://github.com/shadowsocksr-backup/shadowsocksr-android/releases" target="_blank" rel="noopener">ShadowsocksR</a>        （推荐）</p><p><a href="https://github.com/shadowsocksrr/shadowsocksr-android/releases" target="_blank" rel="noopener">ShadowsocksRR</a></p><p><a href="https://play.google.com/store/apps/details?id=org.outline.android.client" target="_blank" rel="noopener">Outline</a></p><h3 id="Windows-客户端"><a href="#Windows-客户端" class="headerlink" title="Windows 客户端"></a>Windows 客户端</h3><p><a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">Shadowsocks</a></p><p><a href="https://github.com/shadowsocksr-backup/shadowsocksr-csharp/releases" target="_blank" rel="noopener">ShadowsocksR</a>    （推荐）</p><p><a href="https://github.com/SoDa-GitHub/SSD-Windows/releases" target="_blank" rel="noopener">ShadowsocksD</a></p><p><a href="https://raw.githubusercontent.com/Jigsaw-Code/outline-releases/master/client/stable/Outline-Client.exe" target="_blank" rel="noopener">Outline</a>   </p><p><a href="https://www.sockscap64.com/sstap" target="_blank" rel="noopener">SSTap</a></p><p><a href="https://github.com/v2ray/v2ray-core/releases" target="_blank" rel="noopener">v2ray</a></p><h3 id="iOS-客户端-仅国区下架，其他区可下载"><a href="#iOS-客户端-仅国区下架，其他区可下载" class="headerlink" title="iOS 客户端 (仅国区下架，其他区可下载)"></a>iOS 客户端 (仅国区下架，其他区可下载)</h3><p><a href="https://itunes.apple.com/us/app/quantumult/id1252015438" target="_blank" rel="noopener">Quantumult</a> $4.99</p><p><a href="https://itunes.apple.com/us/app/shadowrocket-for-shadowsocks/id932747118" target="_blank" rel="noopener">Shadowrocket</a> $2.99</p><p><a href="https://itunes.apple.com/us/app/outline-app/id1356177741" target="_blank" rel="noopener">Outline Free</a></p><p><a href="https://itunes.apple.com/us/app/outline-app/id1356177741" target="_blank" rel="noopener">Potatso Lite Free</a>        （推荐）</p><h3 id="iOS-客户端-国区可下载"><a href="#iOS-客户端-国区可下载" class="headerlink" title="iOS 客户端 (国区可下载)"></a>iOS 客户端 (国区可下载)</h3><p><a href="https://itunes.apple.com/cn/app/wingy-mian-fei-banvpn-ke-hu/id1148026741?mt=8" target="_blank" rel="noopener">wingy</a>        （推荐）</p><p>shadowrocket</p><h3 id="Mac-客户端"><a href="#Mac-客户端" class="headerlink" title="Mac 客户端"></a>Mac 客户端</h3><p><a href="https://shadowsocks.org/en/download/clients.html" target="_blank" rel="noopener">Shadowsocks</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Android-客户端&quot;&gt;&lt;a href=&quot;#Android-客户端&quot; class=&quot;headerlink&quot; title=&quot;Android 客户端&quot;&gt;&lt;/a&gt;Android 客户端&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/shadow
+      
+    
+    </summary>
+    
+      <category term="科学上网" scheme="http://blog.iruach.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+    
+      <category term="SSR" scheme="http://blog.iruach.com/tags/SSR/"/>
+    
+  </entry>
   
   <entry>
     <title>SSR免费节点2019</title>
