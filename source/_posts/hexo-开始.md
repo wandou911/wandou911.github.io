@@ -1,7 +1,7 @@
 ---
 title: Hexo快速上手
-tags: [科技, 网页]
-categories: "云服务器" #分类
+tags: [Hexo]
+categories: "Hexo教程" #分类
 ---
 
 ## 指令

@@ -2,7 +2,7 @@
 title: Hexo多设备同步
 tags: [Hexo]
 date: 2019-05-27 17:10:49
-categories: "博客"
+categories: "Hexo教程"
 ---
 
 # 前言

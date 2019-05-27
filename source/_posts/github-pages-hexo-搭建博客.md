@@ -1,8 +1,8 @@
 ---
 title: github pages+hexo 搭建博客
 date: 2018-11-23 14:36:10
-tags: [web]
-categories: "博客" #分类
+tags: [Hexo]
+categories: "Hexo教程" #分类
 ---
 
 博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。

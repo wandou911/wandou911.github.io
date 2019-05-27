@@ -3,7 +3,7 @@ title: Hexo分类和标签
 date: 2018-11-26 10:18:42
 categories: "Hexo教程"
 tags: 
-- 分类
+- Hexo
 ---
 
 
