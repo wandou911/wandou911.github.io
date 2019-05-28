@@ -20,7 +20,8 @@ timezone: UTC
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://blog.iruach.com
 root: /
-permalink: :year/:month/:day/:title/
+#permalink: :year/:month/:day/:title/
+permalink: :urlname.html
 permalink_defaults:
 
 # Directory
