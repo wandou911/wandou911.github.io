@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>trojan一键安装 | 晨星科技 | 专注人工智能</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="trojan">
+    <meta name="description" content="trojan 一键安装教程本文目录 trojan简介    trojan安装   准备事项  安装trojan服务端  trojan服务端注意事项  trojan windows客户端使用教程   运行trojan客户端  设置系统代理上网  借助v2rayN上网    其他事项   trojan简介trojan是近两年兴起的网络工具，项目官网是 https://github.com/trojan">
+<meta name="keywords" content="trojan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="trojan一键安装">
+<meta property="og:url" content="http://blog.k12on.com/2020/05/13/2020trojan一键安装/index.html">
+<meta property="og:site_name" content="晨星科技">
+<meta property="og:description" content="trojan 一键安装教程本文目录 trojan简介    trojan安装   准备事项  安装trojan服务端  trojan服务端注意事项  trojan windows客户端使用教程   运行trojan客户端  设置系统代理上网  借助v2rayN上网    其他事项   trojan简介trojan是近两年兴起的网络工具，项目官网是 https://github.com/trojan">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tlanyan.me/trojan-tutorial/trojan%e5%ae%a2%e6%88%b7%e7%ab%af%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6-2/">
+<meta property="og:image" content="https://tlanyan.me/trojan-tutorial/trojan%e8%bf%90%e8%a1%8c%e7%aa%97%e5%8f%a3/">
+<meta property="og:image" content="https://tlanyan.me/trojan-tutorial/windows%e7%b3%bb%e7%bb%9f%e4%bb%a3%e7%90%86%e8%ae%be%e7%bd%ae/">
+<meta property="og:image" content="https://tlanyan.me/trojan-tutorial/windows%e8%ae%be%e7%bd%aepac/">
+<meta property="og:image" content="https://tlanyan.me/trojan-tutorial/windows%e7%b3%bb%e7%bb%9f%e8%ae%be%e7%bd%ae%e5%85%a8%e5%b1%80%e4%bb%a3%e7%90%86/">
+<meta property="og:image" content="https://tlanyan.me/trojan-tutorial/v2rayn%e6%b7%bb%e5%8a%a0socks%e6%9c%8d%e5%8a%a1%e5%99%a8/">
+<meta property="og:image" content="https://tlanyan.me/trojan-tutorial/v2rayn%e8%ae%be%e7%bd%ae%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%bf%a1%e6%81%af/">
+<meta property="og:image" content="https://tlanyan.me/trojan-tutorial/v2rayn%e5%88%87%e6%8d%a2%e4%bb%a3%e7%90%86%e6%a8%a1%e5%bc%8f/">
+<meta property="og:updated_time" content="2020-05-12T09:12:05.082Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="trojan一键安装">
+<meta name="twitter:description" content="trojan 一键安装教程本文目录 trojan简介    trojan安装   准备事项  安装trojan服务端  trojan服务端注意事项  trojan windows客户端使用教程   运行trojan客户端  设置系统代理上网  借助v2rayN上网    其他事项   trojan简介trojan是近两年兴起的网络工具，项目官网是 https://github.com/trojan">
+<meta name="twitter:image" content="https://tlanyan.me/trojan-tutorial/trojan%e5%ae%a2%e6%88%b7%e7%ab%af%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6-2/">
+    
+        <link rel="alternate" type="application/atom+xml" title="晨星科技" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">wandou</h5>
+          <a href="mailto:wandou911@gmail.com" title="wandou911@gmail.com" class="mail">wandou911@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/wandou911" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/1180305662" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about">
+                <i class="icon icon-lg icon-link"></i>
+                about
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">trojan一键安装</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">trojan一键安装</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-05-12T17:05:28.000Z" itemprop="datePublished" class="page-time">
+  2020-05-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/科学上网/">科学上网</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#trojan-一键安装教程"><span class="post-toc-number">1.</span> <span class="post-toc-text">trojan 一键安装教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本文目录"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">本文目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#trojan简介"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">trojan简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装trojan"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">安装trojan</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#准备事项"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">准备事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装trojan服务端"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">安装trojan服务端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#trojan服务端注意事项"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">trojan服务端注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#trojan-windows客户端使用教程"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">trojan windows客户端使用教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行trojan客户端"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">运行trojan客户端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置系统代理上网"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">设置系统代理上网</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#借助v2rayN上网"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">借助v2rayN上网</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他事项"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">其他事项</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-2020trojan一键安装" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">trojan一键安装</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-05-12 17:05:28" datetime="2020-05-12T17:05:28.000Z" itemprop="datePublished">2020-05-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/科学上网/">科学上网</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="trojan-一键安装教程"><a href="#trojan-一键安装教程" class="headerlink" title="trojan 一键安装教程"></a>trojan 一键安装教程</h1><h2 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h2><ul>
+<li><p>trojan简介  </p>
+</li>
+<li><p>trojan安装</p>
+<p>  准备事项<br>  安装trojan服务端<br>  trojan服务端注意事项</p>
+</li>
+<li><p>trojan windows客户端使用教程</p>
+<p>  运行trojan客户端<br>  设置系统代理上网<br>  借助v2rayN上网  </p>
+</li>
+<li><p>其他事项</p>
+</li>
+</ul>
+<h2 id="trojan简介"><a href="#trojan简介" class="headerlink" title="trojan简介"></a>trojan简介</h2><p>trojan是近两年兴起的网络工具，项目官网是 <a href="https://github.com/trojan-gfw" target="_blank" rel="noopener">https://github.com/trojan-gfw</a>，文档官网是<a href="https://trojan-gfw.github.io/trojan" target="_blank" rel="noopener">https://trojan-gfw.github.io/trojan</a>。与强调加密和混淆的SS/SSR等工具不同，trojan将通信流量伪装成互联网上最常见的https流量，从而有效防止流量被检测和干扰。在敏感时期，基本上只有trojan和 v2ray伪装 能提供稳如狗的体验。</p>
+<p>与v2ray相比，trojan有如下特点：</p>
+<ul>
+<li>v2ray是一个网络框架，功能齐全；trojan只是一个绕过防火墙的工具，功能简单；</li>
+<li>v2ray和trojan都能实现https流量伪装；</li>
+<li>v2ray内核用go语言开发，trojan是c++实现，理论上trojan比v2ray性能更好；</li>
+<li>v2ray名气大，使用的人多，客户端很好用；trojan关注和使用的人少，客户端简陋。</li>
+</ul>
+<p>本教程先介绍trojan服务端的安装部署，然后以windows系统为例讲解客户端使用。下载客户端请访问：trojan客户端下载。</p>
+<h2 id="安装trojan"><a href="#安装trojan" class="headerlink" title="安装trojan"></a>安装trojan</h2><h3 id="准备事项"><a href="#准备事项" class="headerlink" title="准备事项"></a>准备事项</h3><p>按照本教程安装trojan需要如下前提条件：</p>
+<ol>
+<li><p>有一台运行Linux的境外vps；购买vps可参考：一些VPS商家整理；</p>
+</li>
+<li><p>有一个域名；购买域名可参考：Namesilo购买域名详细教程；</p>
+</li>
+<li><p>为域名申请一个证书；可参考：使用Let’s Encrypt的免费证书；</p>
+</li>
+<li><p>通过终端连接到vps；Windows系统请参考 Bitvise连接Linux服务器教程，mac用户请参考 Mac电脑连接Linux教程。</p>
+</li>
+</ol>
+<p>注意：根据trojan的原理，理论上可以无需域名，对ip自签发证书也能配置和使用（v2ray同理）。这种情况下相当于对流量做了TLS加密，不如有域名的稳（虽然也能用）。</p>
+<h3 id="安装trojan服务端"><a href="#安装trojan服务端" class="headerlink" title="安装trojan服务端"></a>安装trojan服务端</h3><p>本教程服务端系统是CentOS 7，其他系统的命令基本类似，请自行转换。</p>
+<p>连到VPS后，终端输入如下命令安装trojan：</p>
+<p><code>sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)&quot;</code></p>
+<p>该命令会下载最新版的trojan并安装。安装完毕后，trojan配置文件路径是 /usr/local/etc/trojan/config.json，其初始内容为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;run_type&quot;: &quot;server&quot;,</span><br><span class="line">    &quot;local_addr&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;local_port&quot;: 443,</span><br><span class="line">    &quot;remote_addr&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;remote_port&quot;: 80,</span><br><span class="line">    &quot;password&quot;: [</span><br><span class="line">        &quot;password1&quot;,</span><br><span class="line">        &quot;password2&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;log_level&quot;: 1,</span><br><span class="line">    &quot;ssl&quot;: &#123;</span><br><span class="line">        &quot;cert&quot;: &quot;/path/to/certificate.crt&quot;,</span><br><span class="line">        &quot;key&quot;: &quot;/path/to/private.key&quot;,</span><br><span class="line">        &quot;key_password&quot;: &quot;&quot;,</span><br><span class="line">        &quot;cipher&quot;: &quot;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384&quot;,</span><br><span class="line">        &quot;cipher_tls13&quot;: &quot;TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384&quot;,</span><br><span class="line">        &quot;prefer_server_cipher&quot;: true,</span><br><span class="line">        &quot;alpn&quot;: [</span><br><span class="line">            &quot;http/1.1&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;reuse_session&quot;: true,</span><br><span class="line">        &quot;session_ticket&quot;: false,</span><br><span class="line">        &quot;session_timeout&quot;: 600,</span><br><span class="line">        &quot;plain_http_response&quot;: &quot;&quot;,</span><br><span class="line">        &quot;curves&quot;: &quot;&quot;,</span><br><span class="line">        &quot;dhparam&quot;: &quot;&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;tcp&quot;: &#123;</span><br><span class="line">        &quot;prefer_ipv4&quot;: false,</span><br><span class="line">        &quot;no_delay&quot;: true,</span><br><span class="line">        &quot;keep_alive&quot;: true,</span><br><span class="line">        &quot;reuse_port&quot;: false,</span><br><span class="line">        &quot;fast_open&quot;: false,</span><br><span class="line">        &quot;fast_open_qlen&quot;: 20</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;mysql&quot;: &#123;</span><br><span class="line">        &quot;enabled&quot;: false,</span><br><span class="line">        &quot;server_addr&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">        &quot;server_port&quot;: 3306,</span><br><span class="line">        &quot;database&quot;: &quot;trojan&quot;,</span><br><span class="line">        &quot;username&quot;: &quot;trojan&quot;,</span><br><span class="line">        &quot;password&quot;: &quot;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>请重点关注配置文件中的如下参数：</p>
+<ul>
+<li><code>local_port</code>：监听的端口，默认是443，除非端口被墙，不建议改成其他端口；</li>
+<li><code>remote_addr</code>和<code>remote_port</code>：非trojan协议时，将请求转发处理的地址和端口。可以是任意有效的ip/域名和端口号，默认是本机和80端口；</li>
+<li><code>password</code>：密码。需要几个密码就填几行，最后一行结尾不能有逗号；</li>
+<li><code>cert</code>和<code>key</code>：域名的证书和密钥，Let’s Encrypt申请的证书可用 certbot certificates 查看证书路径；</li>
+<li>key_password：默认没有密码（如果证书文件有密码就要填上）；</li>
+<li>alpn：建议填两行：http/1.1和h2，保持默认也没有问题。</li>
+</ul>
+<p>根据自己的需求修改配置文件（大部分参数保持默认即可），保存，然后设置开机启动：<code>systemctl enable trojan</code>，并启动trojan： <code>systemctl start trojan</code>。</p>
+<p>检查trojan是否在运行：<code>ss -lp | grep trojan</code>，如果输出为空，可能的原因包括：</p>
+<ul>
+<li>config.json文件有语法错误：请注意是否少了逗号，有特殊字符等；</li>
+<li>开启了selinux： setenforce 0关闭再启动 trojan。</li>
+</ul>
+<p>软件运行没问题的话，最后一步是防火墙放行端口（如果开了防火墙的话）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-service=https # 端口是443</span><br><span class="line">firewall-cmd --permanent --add-port=端口号/tcp # 其他端口号</span><br><span class="line">firewall-cmd --reload # 重新加载防火墙</span><br></pre></td></tr></table></figure>
+<h3 id="trojan服务端注意事项"><a href="#trojan服务端注意事项" class="headerlink" title="trojan服务端注意事项"></a>trojan服务端注意事项</h3><p>以下是一些注意事项：</p>
+<ol>
+<li>为了让伪装更正常，配置文件中的 remote_addr 和 remote_port 请认真填写。如果使用默认的 127.0.0.1 和 80，请运行以下命令安装Nginx并放行80端口：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release &amp;&amp; yum install -y nginx</span><br><span class="line">systemctl enable nginx; systemctl start nginx</span><br><span class="line">firewall-cmd --permanent --add-service=http</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>完成后打开浏览器输入域名，应该出现Nginx欢迎页。更换伪装网站页面只需上传文件到 /usr/share/nginx/html 目录即可。</p>
+<ol start="2">
+<li><p>remote_addr 和 remote_port也可以填其他ip/域名和端口。例如将所有请求转发到本站，remote_addr 填 tlanyan.me，remote_port 填443。做大死的行为是remote_addr填 facebook/google/twitter等敏感域名，GFW过来一看可能就直接把你的ip安排得明明白白。</p>
+</li>
+<li><p>如果vps网页后台有防火墙（阿里云/谷歌云/aws买的服务器），请记得放行相应端口。</p>
+</li>
+</ol>
+<p>到此服务端应该已经安装好并运行正常，接下来是配置客户端使用。</p>
+<h2 id="trojan-windows客户端使用教程"><a href="#trojan-windows客户端使用教程" class="headerlink" title="trojan windows客户端使用教程"></a>trojan windows客户端使用教程</h2><p>本节以windows系统为例，讲解trojan客户端的配置和使用。</p>
+<h3 id="运行trojan客户端"><a href="#运行trojan客户端" class="headerlink" title="运行trojan客户端"></a>运行trojan客户端</h3><p>首先 <a href="https://tlanyan.me/trojan-clients-download/" target="_blank" rel="noopener">下载trojan客户端</a>，解压压缩包，进入trojan文件夹。用记事本打开 config.json 文件，做如下修改：</p>
+<p>trojan客户端配置文件</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://tlanyan.me/trojan-tutorial/trojan%e5%ae%a2%e6%88%b7%e7%ab%af%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6-2/" alt="trojan客户端配置文件" title="">
+                </div>
+                <div class="image-caption">trojan客户端配置文件</div>
+            </figure>
+<p>remote_addr可以设置成vps的ip，这时verify和verify_hostname需要设置成false</p>
+<p>改好后保存并关闭文件，双击文件夹内的 trojan.exe 文件，trojan程序运行，出现如下黑窗口：</p>
+<p>trojan运行窗口</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://tlanyan.me/trojan-tutorial/trojan%e8%bf%90%e8%a1%8c%e7%aa%97%e5%8f%a3/" alt="trojan运行窗口" title="">
+                </div>
+                <div class="image-caption">trojan运行窗口</div>
+            </figure>
+<p>如果无法运行，先双击“VC_redist.x86.exe”安装依赖，然后再运行。</p>
+<p>与SS/SSR/v2ray等客户端不同，trojan运行出现上述界面后，浏览器无法直接上外网，需要进行额外的设置。</p>
+<p>本文介绍两种方式：</p>
+<ol>
+<li><p>设置系统代理；</p>
+</li>
+<li><p>借助v2rayN。</p>
+</li>
+</ol>
+<h3 id="设置系统代理上网"><a href="#设置系统代理上网" class="headerlink" title="设置系统代理上网"></a>设置系统代理上网</h3><ol>
+<li>打开windows设置 -&gt; 网络和Internet -&gt; 代理，出现如下界面：</li>
+</ol>
+<p>windows系统代理设置</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://tlanyan.me/trojan-tutorial/windows%e7%b3%bb%e7%bb%9f%e4%bb%a3%e7%90%86%e8%ae%be%e7%bd%ae/" alt="windows系统代理设置" title="">
+                </div>
+                <div class="image-caption">windows系统代理设置</div>
+            </figure>
+<ol start="2">
+<li>设置pac方式上网（推荐！）：关闭“自动检测设置”，打开“使用设置脚本”，在脚本地址一栏填入<code>https://tlanyan.me/trojan-pac.php?p=端口号</code>（端口号改成电脑上trojan配置文件中的local_port，例如1080），然后点击”保存”：</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://tlanyan.me/trojan-tutorial/windows%e8%ae%be%e7%bd%aepac/" alt="windows设置pac" title="">
+                </div>
+                <div class="image-caption">windows设置pac</div>
+            </figure>
+<ol start="3">
+<li>如果你需要全局代理模式，请这样设置：关闭“自动检测设置”和“使用设置脚本”，打开“使用代理服务器”，地址填入127.0.0.1，端口填入trojan配置文件中的local_port，下面一栏填入以下内容：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost;127.*;10.*;172.16.*;172.17.*;172.18.*;172.19.*;172.20.*;172.21.*;172.22.*;172.23.*;172.24.*;172.25.*;172.26.*;172.27.*;172.28.*;172.29.*;172.30.*;172.31.*;172.32.*;192.168.*</span><br></pre></td></tr></table></figure>
+<p>windows系统设置全局代理</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://tlanyan.me/trojan-tutorial/windows%e7%b3%bb%e7%bb%9f%e8%ae%be%e7%bd%ae%e5%85%a8%e5%b1%80%e4%bb%a3%e7%90%86/" alt="windows系统设置全局代理" title="">
+                </div>
+                <div class="image-caption">windows系统设置全局代理</div>
+            </figure>
+<p>然后点击保存。</p>
+<p>无论哪种方式，配置正确的话应该都能正常上外网。</p>
+<h3 id="借助v2rayN上网"><a href="#借助v2rayN上网" class="headerlink" title="借助v2rayN上网"></a>借助v2rayN上网</h3><p>设置系统代理方式不能方便的切换pac和全局模式，本节介绍使用v2rayN客户端更方便的达到相同目的。</p>
+<ol>
+<li>首先从 v2ray客户端 <a href="https://www.hijk.pw/v2ray-windows-client-download/" target="_blank" rel="noopener">下载v2rayN</a>，然后解压进入v2rayN-Core文件夹。双击文件夹内的 v2rayN.exe 启动，在桌面右下角找到v2rayN的图标（logo是V），双击打开配置界面，按下图添加socks5服务器：</li>
+</ol>
+<p>v2rayN添加socks服务器</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://tlanyan.me/trojan-tutorial/v2rayn%e6%b7%bb%e5%8a%a0socks%e6%9c%8d%e5%8a%a1%e5%99%a8/" alt="v2rayN添加socks服务器" title="">
+                </div>
+                <div class="image-caption">v2rayN添加socks服务器</div>
+            </figure>
+<ol start="2">
+<li>在弹出来的配置界面分别填入 127.0.0.1 和设置的端口，别名随便填一个，比如 trojan，然后点击保存：</li>
+</ol>
+<p>v2rayN设置服务器信息</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://tlanyan.me/trojan-tutorial/v2rayn%e8%ae%be%e7%bd%ae%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%bf%a1%e6%81%af/" alt="v2rayN设置服务器信息" title="">
+                </div>
+                <div class="image-caption">v2rayN设置服务器信息</div>
+            </figure>
+<ol start="3">
+<li>右下角找到v2rayN图标，点右键，在”Http代理”中选择PAC模式或者全局模式：</li>
+</ol>
+<p>v2rayN切换代理模式</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://tlanyan.me/trojan-tutorial/v2rayn%e5%88%87%e6%8d%a2%e4%bb%a3%e7%90%86%e6%a8%a1%e5%bc%8f/" alt="v2rayN切换代理模式" title="">
+                </div>
+                <div class="image-caption">v2rayN切换代理模式</div>
+            </figure>
+<p>接下来，就可以愉快的上外网了。</p>
+<h2 id="其他事项"><a href="#其他事项" class="headerlink" title="其他事项"></a>其他事项</h2><ol>
+<li><p>可以用SwitchOmega等插件、浏览器设置代理等方式达到同样效果；</p>
+</li>
+<li><p>v2rayN界面的服务器列表栏点右键可以测试延迟，设置活动服务器等。</p>
+</li>
+</ol>
+<p>本教程到此结束，如有问题请留言。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><p><a href="https://trojan-gfw.github.io/trojan/overview" target="_blank" rel="noopener">trojan – An unidentifiable mechanism that helps you bypass GFW.</a></p>
+</li>
+<li><p><a href="https://github.com/trojan-gfw" target="_blank" rel="noopener">Trojan-GFW</a></p>
+</li>
+<li><p><a href="https://transparencyreport.google.com/https/overview" target="_blank" rel="noopener">网络上的HTTPS加密</a></p>
+</li>
+<li><p><a href="https://tlanyan.me/trojan-tutorial/" target="_blank" rel="noopener">trojan安装</a></p>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-12T09:12:05.082Z" itemprop="dateUpdated">2020-05-12 09:12:05</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2020/05/13/2020trojan一键安装/" target="_blank" rel="external">http://blog.k12on.com/2020/05/13/2020trojan一键安装/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.k12on.com">
+            <img src="/img/avatar.jpg" alt="wandou">
+            wandou
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trojan/">trojan</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.k12on.com/2020/05/13/2020trojan一键安装/&title=《trojan一键安装》 — 晨星科技&pic=http://blog.k12on.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.k12on.com/2020/05/13/2020trojan一键安装/&title=《trojan一键安装》 — 晨星科技&source=专注人工智能" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.k12on.com/2020/05/13/2020trojan一键安装/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《trojan一键安装》 — 晨星科技&url=http://blog.k12on.com/2020/05/13/2020trojan一键安装/&via=http://blog.k12on.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.k12on.com/2020/05/13/2020trojan一键安装/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/16/SSR客户端下载/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">SSR客户端下载</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "VOVn3xhKE4eJL6TpShk8jfdi-gzGzoHsz",
+            appKey: "HJLyhFBsJDz6Ft5bTJnCG8nG",
+            avatar: "mm",
+            placeholder: "要不要说点什么",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>wandou &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.k12on.com/2020/05/13/2020trojan一键安装/&title=《trojan一键安装》 — 晨星科技&pic=http://blog.k12on.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.k12on.com/2020/05/13/2020trojan一键安装/&title=《trojan一键安装》 — 晨星科技&source=专注人工智能" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.k12on.com/2020/05/13/2020trojan一键安装/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《trojan一键安装》 — 晨星科技&url=http://blog.k12on.com/2020/05/13/2020trojan一键安装/&via=http://blog.k12on.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.k12on.com/2020/05/13/2020trojan一键安装/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACM0lEQVR42u3aW27DMAwF0ex/0+4CUttzSRuIqNFXkTaOjgoofH0+eB1f6/v16788e9rZbz9vLBkyZCzLOC4X2S55/tkW+efeHJAMGTI2YPCPP/swcl2SgyBPkyFDhgzCSAH9A5IhQ4aMDqMD+6ELV4YMGT/PIMkkKcDx7XLGw7m4DBkyFmT0g7n3fn6lvyFDhoylGEe4eEE/vS6PxpIhQ8ZsRppqkrCs9rRa6itDhowdGGRDfOsk+UzPGL1XhgwZoxn9baUNyOug8Pr4iv8lGTJkLM5Im4WdTaeAoPQmQ4aMDRidYSyyCQJA2TYfs5AhQ8ZoRieY49d6eonfsGXIkLEB441Q7/qDeTsTfTHIkCFjA0Za1u+Da8HlTblNhgwZQxk8XSQhXa05mrZXT98rQ4aM0Yz+wMSBV62gFhyTDBkyhjLINUoKZP2UlYeYp6GhDBkyRjP4ENhTYxmt74f+LJsMGTIWYaRDFWQ4g1++tYGMf/YgQ4aM0YxOKS0NCmuvk4OTIUPGzowOII3cOschQ4aM3Ri8lMbbkGTwIk16b0JDGTJkDGWkQxK8SUlSUF4dvJkZkSFDxjjGEa60DcCv2s4TZMiQMZvBV1ogq41l1IY8ZMiQsQODXLLkwg3ajaV3xeU2GTJkjGPwi4+3AZ5tMKBhCxkyZMgobSJNX9H12umUypAhYwNGp/GZpsQ8eJUhQ8YODJLE8vJ9vy0aB50yZMgYzXgvNY0TUcwuNjVlyJCxHuMPeT9BzzOK+I4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '晨星科技';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '晨星科技';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

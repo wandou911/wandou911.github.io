@@ -5,9 +5,9 @@
   <subtitle>专注人工智能</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://blog.iruach.com/"/>
-  <updated>2019-05-15T15:14:34.831Z</updated>
-  <id>http://blog.iruach.com/</id>
+  <link href="http://blog.k12on.com/"/>
+  <updated>2020-05-12T09:12:05.082Z</updated>
+  <id>http://blog.k12on.com/</id>
   
   <author>
     <name>wandou</name>
@@ -17,9 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>trojan一键安装</title>
+    <link href="http://blog.k12on.com/2020/05/13/2020trojan%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85/"/>
+    <id>http://blog.k12on.com/2020/05/13/2020trojan一键安装/</id>
+    <published>2020-05-12T17:05:28.000Z</published>
+    <updated>2020-05-12T09:12:05.082Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="trojan-一键安装教程"><a href="#trojan-一键安装教程" class="headerlink" title="trojan 一键安装教程"></a>trojan 一键安装教程</h1><h2 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h2><ul><li><p>trojan简介  </p></li><li><p>trojan安装</p><p>  准备事项<br>  安装trojan服务端<br>  trojan服务端注意事项</p></li><li><p>trojan windows客户端使用教程</p><p>  运行trojan客户端<br>  设置系统代理上网<br>  借助v2rayN上网  </p></li><li><p>其他事项</p></li></ul><h2 id="trojan简介"><a href="#trojan简介" class="headerlink" title="trojan简介"></a>trojan简介</h2><p>trojan是近两年兴起的网络工具，项目官网是 <a href="https://github.com/trojan-gfw" target="_blank" rel="noopener">https://github.com/trojan-gfw</a>，文档官网是<a href="https://trojan-gfw.github.io/trojan" target="_blank" rel="noopener">https://trojan-gfw.github.io/trojan</a>。与强调加密和混淆的SS/SSR等工具不同，trojan将通信流量伪装成互联网上最常见的https流量，从而有效防止流量被检测和干扰。在敏感时期，基本上只有trojan和 v2ray伪装 能提供稳如狗的体验。</p><p>与v2ray相比，trojan有如下特点：</p><ul><li>v2ray是一个网络框架，功能齐全；trojan只是一个绕过防火墙的工具，功能简单；</li><li>v2ray和trojan都能实现https流量伪装；</li><li>v2ray内核用go语言开发，trojan是c++实现，理论上trojan比v2ray性能更好；</li><li>v2ray名气大，使用的人多，客户端很好用；trojan关注和使用的人少，客户端简陋。</li></ul><p>本教程先介绍trojan服务端的安装部署，然后以windows系统为例讲解客户端使用。下载客户端请访问：trojan客户端下载。</p><h2 id="安装trojan"><a href="#安装trojan" class="headerlink" title="安装trojan"></a>安装trojan</h2><h3 id="准备事项"><a href="#准备事项" class="headerlink" title="准备事项"></a>准备事项</h3><p>按照本教程安装trojan需要如下前提条件：</p><ol><li><p>有一台运行Linux的境外vps；购买vps可参考：一些VPS商家整理；</p></li><li><p>有一个域名；购买域名可参考：Namesilo购买域名详细教程；</p></li><li><p>为域名申请一个证书；可参考：使用Let’s Encrypt的免费证书；</p></li><li><p>通过终端连接到vps；Windows系统请参考 Bitvise连接Linux服务器教程，mac用户请参考 Mac电脑连接Linux教程。</p></li></ol><p>注意：根据trojan的原理，理论上可以无需域名，对ip自签发证书也能配置和使用（v2ray同理）。这种情况下相当于对流量做了TLS加密，不如有域名的稳（虽然也能用）。</p><h3 id="安装trojan服务端"><a href="#安装trojan服务端" class="headerlink" title="安装trojan服务端"></a>安装trojan服务端</h3><p>本教程服务端系统是CentOS 7，其他系统的命令基本类似，请自行转换。</p><p>连到VPS后，终端输入如下命令安装trojan：</p><p><code>sudo bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)&quot;</code></p><p>该命令会下载最新版的trojan并安装。安装完毕后，trojan配置文件路径是 /usr/local/etc/trojan/config.json，其初始内容为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;run_type&quot;: &quot;server&quot;,</span><br><span class="line">    &quot;local_addr&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;local_port&quot;: 443,</span><br><span class="line">    &quot;remote_addr&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;remote_port&quot;: 80,</span><br><span class="line">    &quot;password&quot;: [</span><br><span class="line">        &quot;password1&quot;,</span><br><span class="line">        &quot;password2&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;log_level&quot;: 1,</span><br><span class="line">    &quot;ssl&quot;: &#123;</span><br><span class="line">        &quot;cert&quot;: &quot;/path/to/certificate.crt&quot;,</span><br><span class="line">        &quot;key&quot;: &quot;/path/to/private.key&quot;,</span><br><span class="line">        &quot;key_password&quot;: &quot;&quot;,</span><br><span class="line">        &quot;cipher&quot;: &quot;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384&quot;,</span><br><span class="line">        &quot;cipher_tls13&quot;: &quot;TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384&quot;,</span><br><span class="line">        &quot;prefer_server_cipher&quot;: true,</span><br><span class="line">        &quot;alpn&quot;: [</span><br><span class="line">            &quot;http/1.1&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;reuse_session&quot;: true,</span><br><span class="line">        &quot;session_ticket&quot;: false,</span><br><span class="line">        &quot;session_timeout&quot;: 600,</span><br><span class="line">        &quot;plain_http_response&quot;: &quot;&quot;,</span><br><span class="line">        &quot;curves&quot;: &quot;&quot;,</span><br><span class="line">        &quot;dhparam&quot;: &quot;&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;tcp&quot;: &#123;</span><br><span class="line">        &quot;prefer_ipv4&quot;: false,</span><br><span class="line">        &quot;no_delay&quot;: true,</span><br><span class="line">        &quot;keep_alive&quot;: true,</span><br><span class="line">        &quot;reuse_port&quot;: false,</span><br><span class="line">        &quot;fast_open&quot;: false,</span><br><span class="line">        &quot;fast_open_qlen&quot;: 20</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;mysql&quot;: &#123;</span><br><span class="line">        &quot;enabled&quot;: false,</span><br><span class="line">        &quot;server_addr&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">        &quot;server_port&quot;: 3306,</span><br><span class="line">        &quot;database&quot;: &quot;trojan&quot;,</span><br><span class="line">        &quot;username&quot;: &quot;trojan&quot;,</span><br><span class="line">        &quot;password&quot;: &quot;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>请重点关注配置文件中的如下参数：</p><ul><li><code>local_port</code>：监听的端口，默认是443，除非端口被墙，不建议改成其他端口；</li><li><code>remote_addr</code>和<code>remote_port</code>：非trojan协议时，将请求转发处理的地址和端口。可以是任意有效的ip/域名和端口号，默认是本机和80端口；</li><li><code>password</code>：密码。需要几个密码就填几行，最后一行结尾不能有逗号；</li><li><code>cert</code>和<code>key</code>：域名的证书和密钥，Let’s Encrypt申请的证书可用 certbot certificates 查看证书路径；</li><li>key_password：默认没有密码（如果证书文件有密码就要填上）；</li><li>alpn：建议填两行：http/1.1和h2，保持默认也没有问题。</li></ul><p>根据自己的需求修改配置文件（大部分参数保持默认即可），保存，然后设置开机启动：<code>systemctl enable trojan</code>，并启动trojan： <code>systemctl start trojan</code>。</p><p>检查trojan是否在运行：<code>ss -lp | grep trojan</code>，如果输出为空，可能的原因包括：</p><ul><li>config.json文件有语法错误：请注意是否少了逗号，有特殊字符等；</li><li>开启了selinux： setenforce 0关闭再启动 trojan。</li></ul><p>软件运行没问题的话，最后一步是防火墙放行端口（如果开了防火墙的话）：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-service=https # 端口是443</span><br><span class="line">firewall-cmd --permanent --add-port=端口号/tcp # 其他端口号</span><br><span class="line">firewall-cmd --reload # 重新加载防火墙</span><br></pre></td></tr></table></figure><h3 id="trojan服务端注意事项"><a href="#trojan服务端注意事项" class="headerlink" title="trojan服务端注意事项"></a>trojan服务端注意事项</h3><p>以下是一些注意事项：</p><ol><li>为了让伪装更正常，配置文件中的 remote_addr 和 remote_port 请认真填写。如果使用默认的 127.0.0.1 和 80，请运行以下命令安装Nginx并放行80端口：</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release &amp;&amp; yum install -y nginx</span><br><span class="line">systemctl enable nginx; systemctl start nginx</span><br><span class="line">firewall-cmd --permanent --add-service=http</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure><p>完成后打开浏览器输入域名，应该出现Nginx欢迎页。更换伪装网站页面只需上传文件到 /usr/share/nginx/html 目录即可。</p><ol start="2"><li><p>remote_addr 和 remote_port也可以填其他ip/域名和端口。例如将所有请求转发到本站，remote_addr 填 tlanyan.me，remote_port 填443。做大死的行为是remote_addr填 facebook/google/twitter等敏感域名，GFW过来一看可能就直接把你的ip安排得明明白白。</p></li><li><p>如果vps网页后台有防火墙（阿里云/谷歌云/aws买的服务器），请记得放行相应端口。</p></li></ol><p>到此服务端应该已经安装好并运行正常，接下来是配置客户端使用。</p><h2 id="trojan-windows客户端使用教程"><a href="#trojan-windows客户端使用教程" class="headerlink" title="trojan windows客户端使用教程"></a>trojan windows客户端使用教程</h2><p>本节以windows系统为例，讲解trojan客户端的配置和使用。</p><h3 id="运行trojan客户端"><a href="#运行trojan客户端" class="headerlink" title="运行trojan客户端"></a>运行trojan客户端</h3><p>首先 <a href="https://tlanyan.me/trojan-clients-download/" target="_blank" rel="noopener">下载trojan客户端</a>，解压压缩包，进入trojan文件夹。用记事本打开 config.json 文件，做如下修改：</p><p>trojan客户端配置文件</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://tlanyan.me/trojan-tutorial/trojan%e5%ae%a2%e6%88%b7%e7%ab%af%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6-2/" alt="trojan客户端配置文件" title="">                </div>                <div class="image-caption">trojan客户端配置文件</div>            </figure><p>remote_addr可以设置成vps的ip，这时verify和verify_hostname需要设置成false</p><p>改好后保存并关闭文件，双击文件夹内的 trojan.exe 文件，trojan程序运行，出现如下黑窗口：</p><p>trojan运行窗口</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://tlanyan.me/trojan-tutorial/trojan%e8%bf%90%e8%a1%8c%e7%aa%97%e5%8f%a3/" alt="trojan运行窗口" title="">                </div>                <div class="image-caption">trojan运行窗口</div>            </figure><p>如果无法运行，先双击“VC_redist.x86.exe”安装依赖，然后再运行。</p><p>与SS/SSR/v2ray等客户端不同，trojan运行出现上述界面后，浏览器无法直接上外网，需要进行额外的设置。</p><p>本文介绍两种方式：</p><ol><li><p>设置系统代理；</p></li><li><p>借助v2rayN。</p></li></ol><h3 id="设置系统代理上网"><a href="#设置系统代理上网" class="headerlink" title="设置系统代理上网"></a>设置系统代理上网</h3><ol><li>打开windows设置 -&gt; 网络和Internet -&gt; 代理，出现如下界面：</li></ol><p>windows系统代理设置</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://tlanyan.me/trojan-tutorial/windows%e7%b3%bb%e7%bb%9f%e4%bb%a3%e7%90%86%e8%ae%be%e7%bd%ae/" alt="windows系统代理设置" title="">                </div>                <div class="image-caption">windows系统代理设置</div>            </figure><ol start="2"><li>设置pac方式上网（推荐！）：关闭“自动检测设置”，打开“使用设置脚本”，在脚本地址一栏填入<code>https://tlanyan.me/trojan-pac.php?p=端口号</code>（端口号改成电脑上trojan配置文件中的local_port，例如1080），然后点击”保存”：</li></ol><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://tlanyan.me/trojan-tutorial/windows%e8%ae%be%e7%bd%aepac/" alt="windows设置pac" title="">                </div>                <div class="image-caption">windows设置pac</div>            </figure><ol start="3"><li>如果你需要全局代理模式，请这样设置：关闭“自动检测设置”和“使用设置脚本”，打开“使用代理服务器”，地址填入127.0.0.1，端口填入trojan配置文件中的local_port，下面一栏填入以下内容：</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost;127.*;10.*;172.16.*;172.17.*;172.18.*;172.19.*;172.20.*;172.21.*;172.22.*;172.23.*;172.24.*;172.25.*;172.26.*;172.27.*;172.28.*;172.29.*;172.30.*;172.31.*;172.32.*;192.168.*</span><br></pre></td></tr></table></figure><p>windows系统设置全局代理</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://tlanyan.me/trojan-tutorial/windows%e7%b3%bb%e7%bb%9f%e8%ae%be%e7%bd%ae%e5%85%a8%e5%b1%80%e4%bb%a3%e7%90%86/" alt="windows系统设置全局代理" title="">                </div>                <div class="image-caption">windows系统设置全局代理</div>            </figure><p>然后点击保存。</p><p>无论哪种方式，配置正确的话应该都能正常上外网。</p><h3 id="借助v2rayN上网"><a href="#借助v2rayN上网" class="headerlink" title="借助v2rayN上网"></a>借助v2rayN上网</h3><p>设置系统代理方式不能方便的切换pac和全局模式，本节介绍使用v2rayN客户端更方便的达到相同目的。</p><ol><li>首先从 v2ray客户端 <a href="https://www.hijk.pw/v2ray-windows-client-download/" target="_blank" rel="noopener">下载v2rayN</a>，然后解压进入v2rayN-Core文件夹。双击文件夹内的 v2rayN.exe 启动，在桌面右下角找到v2rayN的图标（logo是V），双击打开配置界面，按下图添加socks5服务器：</li></ol><p>v2rayN添加socks服务器</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://tlanyan.me/trojan-tutorial/v2rayn%e6%b7%bb%e5%8a%a0socks%e6%9c%8d%e5%8a%a1%e5%99%a8/" alt="v2rayN添加socks服务器" title="">                </div>                <div class="image-caption">v2rayN添加socks服务器</div>            </figure><ol start="2"><li>在弹出来的配置界面分别填入 127.0.0.1 和设置的端口，别名随便填一个，比如 trojan，然后点击保存：</li></ol><p>v2rayN设置服务器信息</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://tlanyan.me/trojan-tutorial/v2rayn%e8%ae%be%e7%bd%ae%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%bf%a1%e6%81%af/" alt="v2rayN设置服务器信息" title="">                </div>                <div class="image-caption">v2rayN设置服务器信息</div>            </figure><ol start="3"><li>右下角找到v2rayN图标，点右键，在”Http代理”中选择PAC模式或者全局模式：</li></ol><p>v2rayN切换代理模式</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://tlanyan.me/trojan-tutorial/v2rayn%e5%88%87%e6%8d%a2%e4%bb%a3%e7%90%86%e6%a8%a1%e5%bc%8f/" alt="v2rayN切换代理模式" title="">                </div>                <div class="image-caption">v2rayN切换代理模式</div>            </figure><p>接下来，就可以愉快的上外网了。</p><h2 id="其他事项"><a href="#其他事项" class="headerlink" title="其他事项"></a>其他事项</h2><ol><li><p>可以用SwitchOmega等插件、浏览器设置代理等方式达到同样效果；</p></li><li><p>v2rayN界面的服务器列表栏点右键可以测试延迟，设置活动服务器等。</p></li></ol><p>本教程到此结束，如有问题请留言。</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol><li><p><a href="https://trojan-gfw.github.io/trojan/overview" target="_blank" rel="noopener">trojan – An unidentifiable mechanism that helps you bypass GFW.</a></p></li><li><p><a href="https://github.com/trojan-gfw" target="_blank" rel="noopener">Trojan-GFW</a></p></li><li><p><a href="https://transparencyreport.google.com/https/overview" target="_blank" rel="noopener">网络上的HTTPS加密</a></p></li><li><p><a href="https://tlanyan.me/trojan-tutorial/" target="_blank" rel="noopener">trojan安装</a></p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;trojan-一键安装教程&quot;&gt;&lt;a href=&quot;#trojan-一键安装教程&quot; class=&quot;headerlink&quot; title=&quot;trojan 一键安装教程&quot;&gt;&lt;/a&gt;trojan 一键安装教程&lt;/h1&gt;&lt;h2 id=&quot;本文目录&quot;&gt;&lt;a href=&quot;#本文目录&quot;
+      
+    
+    </summary>
+    
+      <category term="科学上网" scheme="http://blog.k12on.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+    
+      <category term="trojan" scheme="http://blog.k12on.com/tags/trojan/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SSR客户端下载</title>
-    <link href="http://blog.iruach.com/2019/05/16/SSR%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E8%BD%BD/"/>
-    <id>http://blog.iruach.com/2019/05/16/SSR客户端下载/</id>
+    <link href="http://blog.k12on.com/2019/05/16/SSR%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://blog.k12on.com/2019/05/16/SSR客户端下载/</id>
     <published>2019-05-15T23:03:47.000Z</published>
     <updated>2019-05-15T15:14:34.831Z</updated>
     
@@ -34,19 +59,19 @@
     
     </summary>
     
-      <category term="科学上网" scheme="http://blog.iruach.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+      <category term="科学上网" scheme="http://blog.k12on.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
     
-      <category term="SSR" scheme="http://blog.iruach.com/tags/SSR/"/>
+      <category term="SSR" scheme="http://blog.k12on.com/tags/SSR/"/>
     
   </entry>
   
   <entry>
     <title>SSR免费节点2019</title>
-    <link href="http://blog.iruach.com/2019/05/16/SSR%E5%85%8D%E8%B4%B9%E8%8A%82%E7%82%B92019/"/>
-    <id>http://blog.iruach.com/2019/05/16/SSR免费节点2019/</id>
+    <link href="http://blog.k12on.com/2019/05/16/SSR%E5%85%8D%E8%B4%B9%E8%8A%82%E7%82%B92019/"/>
+    <id>http://blog.k12on.com/2019/05/16/SSR免费节点2019/</id>
     <published>2019-05-15T22:22:17.000Z</published>
-    <updated>2019-05-26T08:22:49.789Z</updated>
+    <updated>2020-05-12T09:35:01.280Z</updated>
     
     <content type="html"><![CDATA[<p>分享一些 SSR 公益节点，晚高峰时期网络会有拥挤，错开晚间时期，体验会更好。节点来之不易，请珍惜使用，如有已经不能使用的，欢迎在下方留言，我会随时更新</p><p>免费节点会有限速，地址也会定期更新，想体验高速节点，请点击下面链接注册</p><p> <a href="http://www.xiaokeli.me/register?aff=79" target="_blank" rel="noopener">http://www.xiaokeli.me/register?aff=79</a></p><p>ssr免费节点分享推广 通过您的推广链接注册并激活，你们双方都将获得 10GB 流量奖励；</p><p>日本节点：</p><p>服务器：ssr1.xiaokeli.info<br>远程端口：15297<br>密码：xiaokeli.me<br>加密方法：aes-256-cfb<br>路由：绕过局域网及中国大陆地址</p><p>协议：origin<br>协议参数：<br>混淆方式：plain<br>混淆参数：<br>本地端口：1080</p><p>服务器：ssr2.xiaokeli.info<br>远程端口：15297<br>密码：xiaokeli.me<br>加密方法：aes-256-cfb<br>路由：绕过局域网及中国大陆地址</p><p>协议：origin<br>协议参数：<br>混淆方式：plain<br>混淆参数：<br>本地端口：1080</p><p>美国节点：</p><p>服务器：ssr3.xiaokeli.info<br>远程端口：15297<br>密码：xiaokeli.me<br>加密方法：aes-256-cfb<br>路由：绕过局域网及中国大陆地址</p><p>协议：origin<br>协议参数：<br>混淆方式：plain<br>混淆参数：<br>本地端口：1080</p>]]></content>
     
@@ -61,19 +86,17 @@
     
     </summary>
     
-      <category term="科学上网" scheme="http://blog.iruach.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+      <category term="科学上网" scheme="http://blog.k12on.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
     
-      <category term="SSR" scheme="http://blog.iruach.com/tags/SSR/"/>
-    
-      <category term="VPS" scheme="http://blog.iruach.com/tags/VPS/"/>
+      <category term="SSR" scheme="http://blog.k12on.com/tags/SSR/"/>
     
   </entry>
   
   <entry>
     <title>vps搭建ss教程</title>
-    <link href="http://blog.iruach.com/2018/12/26/vps%E6%90%AD%E5%BB%BAss%E6%95%99%E7%A8%8B/"/>
-    <id>http://blog.iruach.com/2018/12/26/vps搭建ss教程/</id>
+    <link href="http://blog.k12on.com/2018/12/26/vps%E6%90%AD%E5%BB%BAss%E6%95%99%E7%A8%8B/"/>
+    <id>http://blog.k12on.com/2018/12/26/vps搭建ss教程/</id>
     <published>2018-12-25T16:01:33.000Z</published>
     <updated>2018-12-25T08:13:05.159Z</updated>
     
@@ -88,17 +111,17 @@
     
     </summary>
     
-      <category term="科学上网" scheme="http://blog.iruach.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+      <category term="科学上网" scheme="http://blog.k12on.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     
     
-      <category term="ss" scheme="http://blog.iruach.com/tags/ss/"/>
+      <category term="ss" scheme="http://blog.k12on.com/tags/ss/"/>
     
   </entry>
   
   <entry>
     <title>App Store内购审核过程</title>
-    <link href="http://blog.iruach.com/2018/12/25/%E5%86%85%E8%B4%AD/"/>
-    <id>http://blog.iruach.com/2018/12/25/内购/</id>
+    <link href="http://blog.k12on.com/2018/12/25/%E5%86%85%E8%B4%AD/"/>
+    <id>http://blog.k12on.com/2018/12/25/内购/</id>
     <published>2018-12-25T15:47:47.000Z</published>
     <updated>2018-12-25T07:57:19.573Z</updated>
     
@@ -114,19 +137,19 @@
     
     </summary>
     
-      <category term="ios开发" scheme="http://blog.iruach.com/categories/ios%E5%BC%80%E5%8F%91/"/>
+      <category term="ios开发" scheme="http://blog.k12on.com/categories/ios%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="内购审核" scheme="http://blog.iruach.com/tags/%E5%86%85%E8%B4%AD%E5%AE%A1%E6%A0%B8/"/>
+      <category term="内购审核" scheme="http://blog.k12on.com/tags/%E5%86%85%E8%B4%AD%E5%AE%A1%E6%A0%B8/"/>
     
   </entry>
   
   <entry>
     <title>Hexo分类和标签</title>
-    <link href="http://blog.iruach.com/2018/11/26/Hexo%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/"/>
-    <id>http://blog.iruach.com/2018/11/26/Hexo分类和标签/</id>
+    <link href="http://blog.k12on.com/2018/11/26/Hexo%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/"/>
+    <id>http://blog.k12on.com/2018/11/26/Hexo分类和标签/</id>
     <published>2018-11-26T10:18:42.000Z</published>
-    <updated>2018-11-26T02:24:40.159Z</updated>
+    <updated>2020-05-12T09:34:37.217Z</updated>
     
     <content type="html"><![CDATA[<p>hexo 新建一篇文章给它添加分类和标签:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;Hexo教程&quot;</span><br></pre></td></tr></table></figure><p>通过编辑器打开: 添加tags和categories</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: title #文章標題</span><br><span class="line">date: 2016-06-01 23:47:44 #文章生成時間</span><br><span class="line">categories: &quot;Hexo教程&quot; #文章分類目錄 可以省略</span><br><span class="line">tags: #文章标签 可以省略</span><br><span class="line">- 标签1</span><br><span class="line">- 标签2</span><br><span class="line">description: #你对本页的描述 可以省略</span><br><span class="line">---</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -140,17 +163,42 @@
     
     </summary>
     
-      <category term="Hexo教程" scheme="http://blog.iruach.com/categories/Hexo%E6%95%99%E7%A8%8B/"/>
+      <category term="Hexo教程" scheme="http://blog.k12on.com/categories/Hexo%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="分类" scheme="http://blog.iruach.com/tags/%E5%88%86%E7%B1%BB/"/>
+      <category term="hexo" scheme="http://blog.k12on.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo快速上手</title>
+    <link href="http://blog.k12on.com/2018/11/26/hexo-%E5%BC%80%E5%A7%8B/"/>
+    <id>http://blog.k12on.com/2018/11/26/hexo-开始/</id>
+    <published>2018-11-26T10:18:42.000Z</published>
+    <updated>2020-05-12T09:34:03.965Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure><p>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p><h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure><p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p><h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>生成静态文件。</p><p>选项    描述<br>-d, –deploy    文件生成后立即部署网站<br>-w, –watch    监视文件变动<br>该命令可以简写为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure></p><h3 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure><p>发表草稿。</p><h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/。" target="_blank" rel="noopener">http://localhost:4000/。</a></p><p>选项    描述<br>-p, –port    重设端口<br>-s, –static    只使用静态文件<br>-l, –log    启动日记记录，使用覆盖记录格式</p><h3 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>部署网站。</p><p>参数    描述<br>-g, –generate    部署之前预先生成静态文件<br>该命令可以简写为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p><h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo render &lt;file1&gt; [file2] ...</span><br></pre></td></tr></table></figure><p>渲染文件。</p><p>参数    描述<br>-o, –output    设置输出路径</p><h3 id="migrate"><a href="#migrate" class="headerlink" title="migrate"></a>migrate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo migrate &lt;type&gt;</span><br></pre></td></tr></table></figure><p>从其他博客系统 迁移内容。</p><h3 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure><p>清除缓存文件 (db.json) 和已生成的静态文件 (public)。</p><p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p><h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;type&gt;</span><br></pre></td></tr></table></figure><p>列出网站资料。</p><h3 id="version"><a href="#version" class="headerlink" title="version"></a>version</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure><p>显示 Hexo 版本。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;指令&quot;&gt;&lt;a href=&quot;#指令&quot; class=&quot;headerlink&quot; title=&quot;指令&quot;&gt;&lt;/a&gt;指令&lt;/h2&gt;&lt;h3 id=&quot;init&quot;&gt;&lt;a href=&quot;#init&quot; class=&quot;headerlink&quot; title=&quot;init&quot;&gt;&lt;/a&gt;init&lt;/h
+      
+    
+    </summary>
+    
+      <category term="Hexo教程" scheme="http://blog.k12on.com/categories/Hexo%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="hexo" scheme="http://blog.k12on.com/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>type</title>
-    <link href="http://blog.iruach.com/2018/11/24/type-1/"/>
-    <id>http://blog.iruach.com/2018/11/24/type-1/</id>
+    <link href="http://blog.k12on.com/2018/11/24/type-1/"/>
+    <id>http://blog.k12on.com/2018/11/24/type-1/</id>
     <published>2018-11-23T17:52:18.000Z</published>
     <updated>2018-11-23T09:52:18.069Z</updated>
     
@@ -163,8 +211,8 @@
   
   <entry>
     <title>我的新闻</title>
-    <link href="http://blog.iruach.com/2018/11/24/type/"/>
-    <id>http://blog.iruach.com/2018/11/24/type/</id>
+    <link href="http://blog.k12on.com/2018/11/24/type/"/>
+    <id>http://blog.k12on.com/2018/11/24/type/</id>
     <published>2018-11-23T17:47:03.000Z</published>
     <updated>2018-11-23T09:52:46.783Z</updated>
     
@@ -180,19 +228,19 @@
     
     </summary>
     
-      <category term="科技" scheme="http://blog.iruach.com/categories/%E7%A7%91%E6%8A%80/"/>
+      <category term="科技" scheme="http://blog.k12on.com/categories/%E7%A7%91%E6%8A%80/"/>
     
     
-      <category term="科技" scheme="http://blog.iruach.com/tags/%E7%A7%91%E6%8A%80/"/>
+      <category term="科技" scheme="http://blog.k12on.com/tags/%E7%A7%91%E6%8A%80/"/>
     
-      <category term="新闻" scheme="http://blog.iruach.com/tags/%E6%96%B0%E9%97%BB/"/>
+      <category term="新闻" scheme="http://blog.k12on.com/tags/%E6%96%B0%E9%97%BB/"/>
     
   </entry>
   
   <entry>
     <title>常用软件</title>
-    <link href="http://blog.iruach.com/2018/11/23/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"/>
-    <id>http://blog.iruach.com/2018/11/23/常用软件/</id>
+    <link href="http://blog.k12on.com/2018/11/23/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"/>
+    <id>http://blog.k12on.com/2018/11/23/常用软件/</id>
     <published>2018-11-23T15:37:59.000Z</published>
     <updated>2018-11-23T07:55:16.980Z</updated>
     
@@ -208,21 +256,21 @@
     
     </summary>
     
-      <category term="软件" scheme="http://blog.iruach.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+      <category term="软件" scheme="http://blog.k12on.com/categories/%E8%BD%AF%E4%BB%B6/"/>
     
     
-      <category term="software" scheme="http://blog.iruach.com/tags/software/"/>
+      <category term="software" scheme="http://blog.k12on.com/tags/software/"/>
     
   </entry>
   
   <entry>
     <title>github pages+hexo 搭建博客</title>
-    <link href="http://blog.iruach.com/2018/11/23/github-pages-hexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://blog.iruach.com/2018/11/23/github-pages-hexo-搭建博客/</id>
+    <link href="http://blog.k12on.com/2018/11/23/github-pages-hexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://blog.k12on.com/2018/11/23/github-pages-hexo-搭建博客/</id>
     <published>2018-11-23T14:36:10.000Z</published>
-    <updated>2018-11-23T07:14:28.417Z</updated>
+    <updated>2020-05-12T09:37:56.119Z</updated>
     
-    <content type="html"><![CDATA[<p>博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。</p><p>ps:本博客是在MAC环境下进行搭建的，并且对github pages和一些shell脚本知识有所了解。</p><p>首先简单描述一下搭建的大体流程吧（其实挺简单的，只是体力活费时而已）：</p><ol><li>拥有一个github pages</li><li>在本地电脑里配置hexo的环境。（ hexo与github pages绑定，写博文修改博文等，生成静态博客并push to github。)</li><li>绑定自己的域名（也可以不用绑定，github pages有二级域名，只不过绑定了一个属于自己的域名更有逼格点儿。）</li></ol><h2 id="Github-Pages-（第一步）"><a href="#Github-Pages-（第一步）" class="headerlink" title="Github Pages （第一步）"></a>Github Pages （第一步）</h2><p>Github Pages免费的静态站点，其特点：免费托管、自带主题、支持自制页面等。</p><p>创建Github Pages比较简单，只要你有一个github账号在创建一个仓库就行了，但是这个仓库是有规则的，其格式必须为：    <code>yourusername.github.io</code>。然后根据提示一直下一步即可，非常简单。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxhrhpi00vj313l0u0gr9.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><blockquote><p>作为一个开发者，要是连一个github账号都没有，那你可以洗洗睡了。</p></blockquote><blockquote><p>而仓库命名格式中的<code>yourusername</code>是你的github用户名。笔者的github用户名是<code>wandou911</code>。所以仓库命名格式则是<code>wandou911.github.io</code></p></blockquote><h2 id="Hexo-（第二步）"><a href="#Hexo-（第二步）" class="headerlink" title="Hexo （第二步）"></a>Hexo （第二步）</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Hexo的安装网上有很多教程，但很多都很蛋疼且过期技术，所以最好的还是参考Hexo官方的安装教程来一步一步走。在此笔者也不写详细教程了，因为可能不出2个月就坑了小伙伴们。<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">中文版Hexo文档点此进行传送。。。</a></p><blockquote><p>本地环境说白了就是要有Git和Node.js环境即可。详情参见官网文档为准，也最好参考官网，避免入坑。</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure><h3 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h3><p>Hexo安装好了之后，就开始进行建站。打开终端cd到桌面并使用如下命令即可建好</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init yourname</span><br><span class="line">cd yourname</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure><p>其中yourname是你的文件夹名字可随意取（本文章假设yourname的文件夹名称是Hexo）。<br>建站好了之后需要了解更多的信息和其他步骤请参考官网的这篇文档。<a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/setup.html</a></p><p>这里需要特别提一下，官方的文档里并没讲解如何配置与Github pages进行关联，在此特意说一下配置信息。进入到你的站点（使用hexo init yourname命令时，这里的yourname文件夹目录，刚假设yourname是Hexo，所以我们进入Hexo目录），然后以文本编辑器打开<code>_config.yml</code>文件，并滚动到最下面添加如下配置信息（注意最下边有<code>deploy</code>和<code>type</code>字段，覆盖这两个字段或者删除这两个字段然后复制下面的四个字段也行。）：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: https://github.com/biggercoffee/biggercoffee.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure><blockquote><p>注意：type后面：号和git之间的空格</p></blockquote><p>把其中repo字段的值替换成你的github pages提交代码的git地址。</p><blockquote><p>别告诉我你不知道你的github pages的git提交地址。。。<br>好吧，我还是附上一张截图吧，进入到你的github刚创建好的那个github pages仓库就能看到了。</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxhs69aoabj31jm0owwm2.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p>好吧，到此你使用终端，然后进入到你的站点文件夹Hexo</p><p>输入命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>如果成功会打印类似<code>Hexo is running at http://localhost:4000/. Press Ctrl+C to stop</code>的一句话，再打开你的浏览器输入<code>localhost:4000</code>地址见证神奇的一刻吧。</p><h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>当然这只是本地跑起来了，而你的github pages服务器上并没有，所以你就需要在你的站点里使用终端命令进行发布：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>命令详解，第一条是清楚缓存，第二条命令是生成本地发布文件夹，第三条命令才是最后的发布到<code>github pages</code>上。更多的hexo命令操作请参考官方文档即可。不过一般用来用去无非就是创建页面、发布这么几条命令而已。<a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Hexo官方命令参考文档</a></p><p>其实学习一个新东西有事没事多去官方看文档，比在网上查资料要来的更靠谱的多。</p><h3 id="HEXO主题"><a href="#HEXO主题" class="headerlink" title="HEXO主题"></a>HEXO主题</h3><p>如果你到了这里没有任何问题，那么恭喜你已经成功了，不过这才刚刚开始。<br>当你成功的看到自己博客搭建好的那一刻又是激动又是失望，激动的是博客总算折腾出来了，失望的是，为何如此的丑。。。说实话Hexo默认的主题自我感觉还过得去，如果你想换风格,Hexo的主题网上随便一搜也有很多。在此笔者使用的博客主题是indigo（国人写的）。<a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener">https://github.com/yscoder/hexo-theme-indigo</a></p><p>indigo文档已经写得很详细了（上述链接里有文档地址），笔者在此不再详述。</p><h4 id="主题安装："><a href="#主题安装：" class="headerlink" title="主题安装："></a>主题安装：</h4><p>安装需确认你的 Hexo 版本在 3.0 以上，以及 Node 版本为 6.x 以上，在 Hexo 根目录，执行以下命令。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:yscoder/hexo-theme-indigo.git themes/indigo</span><br></pre></td></tr></table></figure><p>打开Hexo目录 进入themes目录，就可以看到刚刚下载的主题</p><p>Hexo目录<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxhtrrucpyj30ze0e0gnj.jpg" alt="Hexo目录" title="">                </div>                <div class="image-caption">Hexo目录</div>            </figure></p><p>themes目录</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxhtps7kmuj30zc0d8dgk.jpg" alt="themes目录" title="">                </div>                <div class="image-caption">themes目录</div>            </figure><h4 id="主题配置："><a href="#主题配置：" class="headerlink" title="主题配置："></a>主题配置：</h4><p>找到Hexo目录下的_config.yml因为之后还会用到，所以我们在此约定一下，将这个配置文件叫做站点配置文件，找到theme选项，把主题切换为indigo .如下图,将原来的landscape删掉，改为indigo</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxhtw9ao4oj30xk0aaq4d.jpg" alt="indigo主题配置" title="">                </div>                <div class="image-caption">indigo主题配置</div>            </figure><h2 id="域名绑定（第三步，可选）"><a href="#域名绑定（第三步，可选）" class="headerlink" title="域名绑定（第三步，可选）"></a>域名绑定（第三步，可选）</h2><p>笔者是在万网买的域名（<a href="http://iruach.com/" target="_blank" rel="noopener">http://iruach.com/</a>）。 域名买好之后提交实名认证等，这些操作就不在赘述。域名购买地址<a href="https://wanwang.aliyun.com/" target="_blank" rel="noopener">https://wanwang.aliyun.com/</a>。</p><p>这里需要特别提一下的就是万网如何与github pages进行绑定，首先假设你有一个域名并且是可用状态。修改你域名的DNS地址为 f1g1ns1.dnspod.net和f1g1ns2.dnspod.net</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/660127-fc06d96052ee0cb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p>然后在你的本地站点目录里的source目录下添加一个CNAME文件，不带后缀，效果如下</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/660127-4f4ac0bceaf94756.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p>以文本编辑器打开CNAME，里面添加你的域名信息（不加http://） 如下图</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxhu5ng11xj30zk0443yn.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p>填写完了之后再重新部署到github pages上（部署简写命令hexo d -g)<br>下一步注册DNSpod，然后添加域名，添加记录即可。</p><p>添加域名填写你的域名即可，老规矩不用添加http://，然后在点击你的域名点进去在添加CNAME记录即可（其中记录中CNAME的值是你的github pages的地址）。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxhuic2r9qj317g0m8n2o.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p>那么现在把你本地的Hexo生成一下在提交到Github pages上吧</p><p>生成和提交简写命令:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure><p>然后打开你的浏览器输入你购买的域名尝试吧。<br>笔者的博客域名：<a href="http://blog.iruach.com/">http://blog.iruach.com/</a></p><p>ps1:万网DNS地址更换貌似需要一段时间才能生效，如果不能访问请晚点或者隔天再访问域名，如果还是不行可能就是出问题了。反正笔者当时运气好，修改了万网DNS之后即时生效。</p><p>ps2:由于笔者用的是二级域名，如果是一级域名，上面CNAME文件和DNSPOD解析如下图即可：</p><p>CNAME文件写入<code>iruach.com</code><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxhuaucmwoj30zm0dmjrt.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure></p><p>DNSPOD解析主机记录写入<code>www</code></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxhubrqe7vj317u0m4gr1.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><h2 id="笔者分享"><a href="#笔者分享" class="headerlink" title="笔者分享"></a>笔者分享</h2><p>分享一些笔者用Hexo写文章的tips</p><h3 id="文章管理"><a href="#文章管理" class="headerlink" title="文章管理"></a>文章管理</h3><p>一般笔者写文章、修改文章是在本地可视化写文章，然后在使用命令提交上去。笔者使用的是一个hexo可视化文章管理的插件（hey），地址：<a href="https://github.com/nihgwu/hexo-hey" target="_blank" rel="noopener">https://github.com/nihgwu/hexo-hey</a> 。</p><p>当然也有一个Hexo的admin插件，但是那个插件不支持图片拖拽进来，所以笔者推荐使用hey。安装和使用详情，参见笔者给出的github地址。</p><h3 id="shell脚本自动化（可忽略，只是一个想法）"><a href="#shell脚本自动化（可忽略，只是一个想法）" class="headerlink" title="shell脚本自动化（可忽略，只是一个想法）"></a>shell脚本自动化（可忽略，只是一个想法）</h3><p>开启Hexo的本地服务或者提交到github pages这些都是一些终端里的Hexo命令，所以笔者写了一些shell脚本，来简化这些操作。所以基本就是用hey可视化写文章，写好了之后，然后点击一键部署的shell脚本，然后就自动发布了（当然这也纯属鸡助，看个人。）。由于shell脚本比较简单，随意网上搜索资料一大堆。再加上笔者自己写的脚本代码也没上传，在此插入一个一键部署的shell脚本代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd Desktop/Hexo</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>cd到自己的站点目录，然后直接使用hexo命令即可。shell脚本自动化操作就是封装了这些命令而已，在此也只是提供这么一个想法，既然我们都是coder，何不善用自己已有的知识尼。<br>写到最后</p><p>github pages虽然免费，但毕竟是国外的服务器，国内访问可以稍微缓慢，如果是土豪，可去买一个支持Node.js的国内云空间即可。总之github pages + hexo搭建博客还是挺能折腾人的。但毕竟免费，而且身为技术人员不就是该具备折腾的精神吗？（博客地址点此）</p><h3 id="Hexo常见问题"><a href="#Hexo常见问题" class="headerlink" title="Hexo常见问题"></a>Hexo常见问题</h3><blockquote><p>在执行 hexo deploy或者 hexo d 后,出现 error deployer not found:git 的错误处理</p></blockquote><p>输入代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><p>部署：</p><pre><code>hexo d</code></pre><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接:"></a>参考链接:</h3><p>1 <a href="https://www.jianshu.com/p/834d7cc0668d" target="_blank" rel="noopener">我的博客是如何搭建的（github pages + HEXO + 域名绑定）</a></p><p>2 <a href="https://hexo.io" target="_blank" rel="noopener">hexo官方文档</a></p><p>3 <a href="https://www.zhihu.com/question/24422335" target="_blank" rel="noopener">有哪些好看的 Hexo 主题</a></p><p>4 <a href="https://www.jianshu.com/p/4d2c07a330da" target="_blank" rel="noopener">Hexo常见问题</a></p><p>5 <a href="https://github.com/qiubaiying/qiubaiying.github.io/wiki/博客搭建详细教程#Rename" target="_blank" rel="noopener">博客搭建详细教程</a></p>]]></content>
+    <content type="html"><![CDATA[<p>博客搭建好之后，貌似很久没有写文章了，现在就来分享一下我搭建博客的艰苦行程和一些莫名其妙的坑。</p><p>ps:本博客是在MAC环境下进行搭建的，并且对github pages和一些shell脚本知识有所了解。</p><p>首先简单描述一下搭建的大体流程吧（其实挺简单的，只是体力活费时而已）：</p><ol><li>拥有一个github pages</li><li>在本地电脑里配置hexo的环境。（ hexo与github pages绑定，写博文修改博文等，生成静态博客并push to github。)</li><li>绑定自己的域名（也可以不用绑定，github pages有二级域名，只不过绑定了一个属于自己的域名更有逼格点儿。）</li></ol><h2 id="Github-Pages-（第一步）"><a href="#Github-Pages-（第一步）" class="headerlink" title="Github Pages （第一步）"></a>Github Pages （第一步）</h2><p>Github Pages免费的静态站点，其特点：免费托管、自带主题、支持自制页面等。</p><p>创建Github Pages比较简单，只要你有一个github账号在创建一个仓库就行了，但是这个仓库是有规则的，其格式必须为：    <code>yourusername.github.io</code>。然后根据提示一直下一步即可，非常简单。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxhrhpi00vj313l0u0gr9.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><blockquote><p>作为一个开发者，要是连一个github账号都没有，那你可以洗洗睡了。</p></blockquote><blockquote><p>而仓库命名格式中的<code>yourusername</code>是你的github用户名。笔者的github用户名是<code>wandou911</code>。所以仓库命名格式则是<code>wandou911.github.io</code></p></blockquote><h2 id="Hexo-（第二步）"><a href="#Hexo-（第二步）" class="headerlink" title="Hexo （第二步）"></a>Hexo （第二步）</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Hexo的安装网上有很多教程，但很多都很蛋疼且过期技术，所以最好的还是参考Hexo官方的安装教程来一步一步走。在此笔者也不写详细教程了，因为可能不出2个月就坑了小伙伴们。<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">中文版Hexo文档点此进行传送。。。</a></p><blockquote><p>本地环境说白了就是要有Git和Node.js环境即可。详情参见官网文档为准，也最好参考官网，避免入坑。</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure><h3 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h3><p>Hexo安装好了之后，就开始进行建站。打开终端cd到桌面并使用如下命令即可建好</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init yourname</span><br><span class="line">cd yourname</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure><p>其中yourname是你的文件夹名字可随意取（本文章假设yourname的文件夹名称是Hexo）。<br>建站好了之后需要了解更多的信息和其他步骤请参考官网的这篇文档。<a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/setup.html</a></p><p>这里需要特别提一下，官方的文档里并没讲解如何配置与Github pages进行关联，在此特意说一下配置信息。进入到你的站点（使用hexo init yourname命令时，这里的yourname文件夹目录，刚假设yourname是Hexo，所以我们进入Hexo目录），然后以文本编辑器打开<code>_config.yml</code>文件，并滚动到最下面添加如下配置信息（注意最下边有<code>deploy</code>和<code>type</code>字段，覆盖这两个字段或者删除这两个字段然后复制下面的四个字段也行。）：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: https://github.com/biggercoffee/biggercoffee.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure><blockquote><p>注意：type后面：号和git之间的空格</p></blockquote><p>把其中repo字段的值替换成你的github pages提交代码的git地址。</p><blockquote><p>别告诉我你不知道你的github pages的git提交地址。。。<br>好吧，我还是附上一张截图吧，进入到你的github刚创建好的那个github pages仓库就能看到了。</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxhs69aoabj31jm0owwm2.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p>好吧，到此你使用终端，然后进入到你的站点文件夹Hexo</p><p>输入命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>如果成功会打印类似<code>Hexo is running at http://localhost:4000/. Press Ctrl+C to stop</code>的一句话，再打开你的浏览器输入<code>localhost:4000</code>地址见证神奇的一刻吧。</p><h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>当然这只是本地跑起来了，而你的github pages服务器上并没有，所以你就需要在你的站点里使用终端命令进行发布：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>命令详解，第一条是清楚缓存，第二条命令是生成本地发布文件夹，第三条命令才是最后的发布到<code>github pages</code>上。更多的hexo命令操作请参考官方文档即可。不过一般用来用去无非就是创建页面、发布这么几条命令而已。<a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Hexo官方命令参考文档</a></p><p>其实学习一个新东西有事没事多去官方看文档，比在网上查资料要来的更靠谱的多。</p><h3 id="HEXO主题"><a href="#HEXO主题" class="headerlink" title="HEXO主题"></a>HEXO主题</h3><p>如果你到了这里没有任何问题，那么恭喜你已经成功了，不过这才刚刚开始。<br>当你成功的看到自己博客搭建好的那一刻又是激动又是失望，激动的是博客总算折腾出来了，失望的是，为何如此的丑。。。说实话Hexo默认的主题自我感觉还过得去，如果你想换风格,Hexo的主题网上随便一搜也有很多。在此笔者使用的博客主题是indigo（国人写的）。<a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener">https://github.com/yscoder/hexo-theme-indigo</a></p><p>indigo文档已经写得很详细了（上述链接里有文档地址），笔者在此不再详述。</p><h4 id="主题安装："><a href="#主题安装：" class="headerlink" title="主题安装："></a>主题安装：</h4><p>安装需确认你的 Hexo 版本在 3.0 以上，以及 Node 版本为 6.x 以上，在 Hexo 根目录，执行以下命令。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:yscoder/hexo-theme-indigo.git themes/indigo</span><br></pre></td></tr></table></figure><p>打开Hexo目录 进入themes目录，就可以看到刚刚下载的主题</p><p>Hexo目录<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxhtrrucpyj30ze0e0gnj.jpg" alt="Hexo目录" title="">                </div>                <div class="image-caption">Hexo目录</div>            </figure></p><p>themes目录</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxhtps7kmuj30zc0d8dgk.jpg" alt="themes目录" title="">                </div>                <div class="image-caption">themes目录</div>            </figure><h4 id="主题配置："><a href="#主题配置：" class="headerlink" title="主题配置："></a>主题配置：</h4><p>找到Hexo目录下的_config.yml因为之后还会用到，所以我们在此约定一下，将这个配置文件叫做站点配置文件，找到theme选项，把主题切换为indigo .如下图,将原来的landscape删掉，改为indigo</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxhtw9ao4oj30xk0aaq4d.jpg" alt="indigo主题配置" title="">                </div>                <div class="image-caption">indigo主题配置</div>            </figure><h2 id="域名绑定（第三步，可选）"><a href="#域名绑定（第三步，可选）" class="headerlink" title="域名绑定（第三步，可选）"></a>域名绑定（第三步，可选）</h2><p>笔者是在万网买的域名（<a href="http://iruach.com/" target="_blank" rel="noopener">http://iruach.com/</a>）。 域名买好之后提交实名认证等，这些操作就不在赘述。域名购买地址<a href="https://wanwang.aliyun.com/" target="_blank" rel="noopener">https://wanwang.aliyun.com/</a>。</p><p>这里需要特别提一下的就是万网如何与github pages进行绑定，首先假设你有一个域名并且是可用状态。修改你域名的DNS地址为 f1g1ns1.dnspod.net和f1g1ns2.dnspod.net</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/660127-fc06d96052ee0cb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p>然后在你的本地站点目录里的source目录下添加一个CNAME文件，不带后缀，效果如下</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload-images.jianshu.io/upload_images/660127-4f4ac0bceaf94756.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p>以文本编辑器打开CNAME，里面添加你的域名信息（不加http://） 如下图</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxhu5ng11xj30zk0443yn.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p>填写完了之后再重新部署到github pages上（部署简写命令hexo d -g)<br>下一步注册DNSpod，然后添加域名，添加记录即可。</p><p>添加域名填写你的域名即可，老规矩不用添加http://，然后在点击你的域名点进去在添加CNAME记录即可（其中记录中CNAME的值是你的github pages的地址）。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxhuic2r9qj317g0m8n2o.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p>那么现在把你本地的Hexo生成一下在提交到Github pages上吧</p><p>生成和提交简写命令:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure><p>然后打开你的浏览器输入你购买的域名尝试吧。<br>笔者的博客域名：<a href="http://blog.iruach.com/" target="_blank" rel="noopener">http://blog.iruach.com/</a></p><p>ps1:万网DNS地址更换貌似需要一段时间才能生效，如果不能访问请晚点或者隔天再访问域名，如果还是不行可能就是出问题了。反正笔者当时运气好，修改了万网DNS之后即时生效。</p><p>ps2:由于笔者用的是二级域名，如果是一级域名，上面CNAME文件和DNSPOD解析如下图即可：</p><p>CNAME文件写入<code>iruach.com</code><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fxhuaucmwoj30zm0dmjrt.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure></p><p>DNSPOD解析主机记录写入<code>www</code></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxhubrqe7vj317u0m4gr1.jpg" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><h2 id="笔者分享"><a href="#笔者分享" class="headerlink" title="笔者分享"></a>笔者分享</h2><p>分享一些笔者用Hexo写文章的tips</p><h3 id="文章管理"><a href="#文章管理" class="headerlink" title="文章管理"></a>文章管理</h3><p>一般笔者写文章、修改文章是在本地可视化写文章，然后在使用命令提交上去。笔者使用的是一个hexo可视化文章管理的插件（hey），地址：<a href="https://github.com/nihgwu/hexo-hey" target="_blank" rel="noopener">https://github.com/nihgwu/hexo-hey</a> 。</p><p>当然也有一个Hexo的admin插件，但是那个插件不支持图片拖拽进来，所以笔者推荐使用hey。安装和使用详情，参见笔者给出的github地址。</p><h3 id="shell脚本自动化（可忽略，只是一个想法）"><a href="#shell脚本自动化（可忽略，只是一个想法）" class="headerlink" title="shell脚本自动化（可忽略，只是一个想法）"></a>shell脚本自动化（可忽略，只是一个想法）</h3><p>开启Hexo的本地服务或者提交到github pages这些都是一些终端里的Hexo命令，所以笔者写了一些shell脚本，来简化这些操作。所以基本就是用hey可视化写文章，写好了之后，然后点击一键部署的shell脚本，然后就自动发布了（当然这也纯属鸡助，看个人。）。由于shell脚本比较简单，随意网上搜索资料一大堆。再加上笔者自己写的脚本代码也没上传，在此插入一个一键部署的shell脚本代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd Desktop/Hexo</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>cd到自己的站点目录，然后直接使用hexo命令即可。shell脚本自动化操作就是封装了这些命令而已，在此也只是提供这么一个想法，既然我们都是coder，何不善用自己已有的知识尼。<br>写到最后</p><p>github pages虽然免费，但毕竟是国外的服务器，国内访问可以稍微缓慢，如果是土豪，可去买一个支持Node.js的国内云空间即可。总之github pages + hexo搭建博客还是挺能折腾人的。但毕竟免费，而且身为技术人员不就是该具备折腾的精神吗？（博客地址点此）</p><h3 id="Hexo常见问题"><a href="#Hexo常见问题" class="headerlink" title="Hexo常见问题"></a>Hexo常见问题</h3><blockquote><p>在执行 hexo deploy或者 hexo d 后,出现 error deployer not found:git 的错误处理</p></blockquote><p>输入代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><p>部署：</p><pre><code>hexo d</code></pre><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接:"></a>参考链接:</h3><p>1 <a href="https://www.jianshu.com/p/834d7cc0668d" target="_blank" rel="noopener">我的博客是如何搭建的（github pages + HEXO + 域名绑定）</a></p><p>2 <a href="https://hexo.io" target="_blank" rel="noopener">hexo官方文档</a></p><p>3 <a href="https://www.zhihu.com/question/24422335" target="_blank" rel="noopener">有哪些好看的 Hexo 主题</a></p><p>4 <a href="https://www.jianshu.com/p/4d2c07a330da" target="_blank" rel="noopener">Hexo常见问题</a></p><p>5 <a href="https://github.com/qiubaiying/qiubaiying.github.io/wiki/博客搭建详细教程#Rename" target="_blank" rel="noopener">博客搭建详细教程</a></p>]]></content>
     
     <summary type="html">
     
@@ -235,17 +283,17 @@
     
     </summary>
     
-      <category term="博客" scheme="http://blog.iruach.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="Hexo教程" scheme="http://blog.k12on.com/categories/Hexo%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="web" scheme="http://blog.iruach.com/tags/web/"/>
+      <category term="hexo" scheme="http://blog.k12on.com/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title></title>
-    <link href="http://blog.iruach.com/2018/11/23/manifest/"/>
-    <id>http://blog.iruach.com/2018/11/23/manifest/</id>
+    <link href="http://blog.k12on.com/2018/11/23/manifest/"/>
+    <id>http://blog.k12on.com/2018/11/23/manifest/</id>
     <published>2018-11-23T06:34:23.181Z</published>
     <updated>2018-11-26T09:40:03.015Z</updated>
     
@@ -257,36 +305,9 @@
   </entry>
   
   <entry>
-    <title>Hexo快速上手</title>
-    <link href="http://blog.iruach.com/2018/11/23/hexo-%E5%BC%80%E5%A7%8B/"/>
-    <id>http://blog.iruach.com/2018/11/23/hexo-开始/</id>
-    <published>2018-11-23T06:34:23.180Z</published>
-    <updated>2018-11-23T06:34:23.180Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure><p>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p><h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure><p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p><h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>生成静态文件。</p><p>选项    描述<br>-d, –deploy    文件生成后立即部署网站<br>-w, –watch    监视文件变动<br>该命令可以简写为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure></p><h3 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure><p>发表草稿。</p><h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/。" target="_blank" rel="noopener">http://localhost:4000/。</a></p><p>选项    描述<br>-p, –port    重设端口<br>-s, –static    只使用静态文件<br>-l, –log    启动日记记录，使用覆盖记录格式</p><h3 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>部署网站。</p><p>参数    描述<br>-g, –generate    部署之前预先生成静态文件<br>该命令可以简写为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p><h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo render &lt;file1&gt; [file2] ...</span><br></pre></td></tr></table></figure><p>渲染文件。</p><p>参数    描述<br>-o, –output    设置输出路径</p><h3 id="migrate"><a href="#migrate" class="headerlink" title="migrate"></a>migrate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo migrate &lt;type&gt;</span><br></pre></td></tr></table></figure><p>从其他博客系统 迁移内容。</p><h3 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure><p>清除缓存文件 (db.json) 和已生成的静态文件 (public)。</p><p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p><h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;type&gt;</span><br></pre></td></tr></table></figure><p>列出网站资料。</p><h3 id="version"><a href="#version" class="headerlink" title="version"></a>version</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure><p>显示 Hexo 版本。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;指令&quot;&gt;&lt;a href=&quot;#指令&quot; class=&quot;headerlink&quot; title=&quot;指令&quot;&gt;&lt;/a&gt;指令&lt;/h2&gt;&lt;h3 id=&quot;init&quot;&gt;&lt;a href=&quot;#init&quot; class=&quot;headerlink&quot; title=&quot;init&quot;&gt;&lt;/a&gt;init&lt;/h
-      
-    
-    </summary>
-    
-      <category term="云服务器" scheme="http://blog.iruach.com/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-      <category term="科技" scheme="http://blog.iruach.com/tags/%E7%A7%91%E6%8A%80/"/>
-    
-      <category term="网页" scheme="http://blog.iruach.com/tags/%E7%BD%91%E9%A1%B5/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
-    <link href="http://blog.iruach.com/2018/11/23/hello-world/"/>
-    <id>http://blog.iruach.com/2018/11/23/hello-world/</id>
+    <link href="http://blog.k12on.com/2018/11/23/hello-world/"/>
+    <id>http://blog.k12on.com/2018/11/23/hello-world/</id>
     <published>2018-11-23T06:34:23.178Z</published>
     <updated>2018-11-23T06:34:23.179Z</updated>
     
@@ -306,8 +327,8 @@
   
   <entry>
     <title>Test</title>
-    <link href="http://blog.iruach.com/2018/11/23/Test/"/>
-    <id>http://blog.iruach.com/2018/11/23/Test/</id>
+    <link href="http://blog.k12on.com/2018/11/23/Test/"/>
+    <id>http://blog.k12on.com/2018/11/23/Test/</id>
     <published>2018-11-22T19:13:35.000Z</published>
     <updated>2018-11-23T06:34:23.181Z</updated>
     
@@ -325,16 +346,16 @@
     </summary>
     
     
-      <category term="科技" scheme="http://blog.iruach.com/tags/%E7%A7%91%E6%8A%80/"/>
+      <category term="科技" scheme="http://blog.k12on.com/tags/%E7%A7%91%E6%8A%80/"/>
     
-      <category term="网页" scheme="http://blog.iruach.com/tags/%E7%BD%91%E9%A1%B5/"/>
+      <category term="网页" scheme="http://blog.k12on.com/tags/%E7%BD%91%E9%A1%B5/"/>
     
   </entry>
   
   <entry>
     <title>hexo categories和tags页面不显示解决办法</title>
-    <link href="http://blog.iruach.com/2016/06/02/hexo%20categories%E5%92%8Ctags%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    <id>http://blog.iruach.com/2016/06/02/hexo categories和tags页面不显示解决办法/</id>
+    <link href="http://blog.k12on.com/2016/06/02/hexo%20categories%E5%92%8Ctags%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://blog.k12on.com/2016/06/02/hexo categories和tags页面不显示解决办法/</id>
     <published>2016-06-01T23:47:44.000Z</published>
     <updated>2018-11-26T02:56:17.143Z</updated>
     
@@ -351,12 +372,12 @@
     
     </summary>
     
-      <category term="Hexo教程" scheme="http://blog.iruach.com/categories/Hexo%E6%95%99%E7%A8%8B/"/>
+      <category term="Hexo教程" scheme="http://blog.k12on.com/categories/Hexo%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="tags" scheme="http://blog.iruach.com/tags/tags/"/>
+      <category term="tags" scheme="http://blog.k12on.com/tags/tags/"/>
     
-      <category term="categories" scheme="http://blog.iruach.com/tags/categories/"/>
+      <category term="categories" scheme="http://blog.k12on.com/tags/categories/"/>
     
   </entry>
   
